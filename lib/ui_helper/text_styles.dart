@@ -2,6 +2,12 @@
 
 import 'package:flutter/material.dart';
 
+TextStyle smalltext(){
+  return const TextStyle(
+      fontSize: 8, color: Colors.black,
+      fontFamily: "poppin_regular"
+  );
+}
 TextStyle simpleText(){
   return const TextStyle(
     fontSize: 13, color: Colors.black,

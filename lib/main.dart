@@ -1,3 +1,4 @@
+import 'package:beeride/driver_profile.dart';
 import 'package:beeride/ui_helper/button_styles.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
 
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Driver_profile(),
     );
   }
 }
