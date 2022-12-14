@@ -41,6 +41,12 @@ TextStyle detailsSize(){
       fontFamily: "poppin_regular"
   );
 }
+TextStyle subHeadingGreen(){
+  return const TextStyle(
+      fontSize: 14, color: Color(0xff49a700),
+      fontFamily: "poppin_regular"
+  );
+}
 TextStyle detailsHintSize(){
   return const TextStyle(
       fontSize: 12, color: Color(0xff828282),
@@ -77,6 +83,13 @@ TextStyle whiteText(){
   return const TextStyle(
     fontFamily: "poppin_regular",
     fontSize: 12,
+    color: Color(0xffffffff),
+  );
+}
+TextStyle whiteDetailedText(){
+  return const TextStyle(
+    fontFamily: "poppin_regular",
+    fontSize: 14,
     color: Color(0xffffffff),
   );
 }
