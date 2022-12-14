@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:beeride/ui_helper/card_style.dart';
+import 'package:beeride/main_home.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -855,7 +856,13 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   width: width,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HowWillUse(),
+                          ));
+                    },
                     child: Text(
                       "Continue",
                       style: loginWithPhoneText(),
@@ -865,6 +872,179 @@ class _CompleteProfileState extends State<CompleteProfile> {
                 ),
                 SizedBox(
                   height: 40,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class HowWillUse extends StatefulWidget {
+  @override
+  State<HowWillUse> createState() => _HowWillUseState();
+}
+
+class _HowWillUseState extends State<HowWillUse> {
+  var appName = "Canva";
+  int select = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    var safe = MediaQuery.of(context).viewPadding.top;
+    var height = MediaQuery.of(context).size.height - safe;
+    var width = MediaQuery.of(context).size.width - safe;
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            height: height,
+            width: width,
+            margin: const EdgeInsets.only(left: 20, right: 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    padding: EdgeInsets.only(top: 20),
+                    height: height / 3,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              InkWell(
+                                  onTap: () => Navigator.pop(context),
+                                  child: const Icon(
+                                    Icons.arrow_back_sharp,
+                                    size: 30,
+                                  )),
+                              Expanded(
+                                  child: Text(
+                                "Profile set-up",
+                                textAlign: TextAlign.center,
+                                style: pageName(),
+                              ))
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "How will you use $appName?",
+                            style: pageHeading(),
+                          ),
+                          Text(
+                            "Let us know how you intent to use Canva, this helps us send you relevant communication",
+                            style: detailsSize(),
+                          ),
+                        ])),
+                Container(
+                    height: height / 4,
+                    child: Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              select = 1;
+                            });
+                          },
+                          child: SizedBox(
+                            height: 126,
+                            width: width / 2 - 20,
+                            child: Card(
+                              elevation: 10,
+                              shadowColor:
+                                  select == 1 ? Colors.blue : Colors.white,
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/driver_mostly.png",
+                                    height: 42,
+                                    width: 56,
+                                  ),
+                                  Text(
+                                    "Mostly as driver",
+                                    style: detailsSize(),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              select = 2;
+                            });
+                          },
+                          child: SizedBox(
+                            height: 126,
+                            width: width / 2,
+                            child: Card(
+                              elevation: 10,
+                              shadowColor:
+                                  select == 2 ? Colors.red : Colors.white,
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/mostlypessanger.png",
+                                    height: 42,
+                                    width: 56,
+                                  ),
+                                  Text(
+                                    "Mostly as pessanger",
+                                    style: detailsSize(),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    )),
+                Container(
+                  height: height / 3,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(
+                        width: width,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainHomePage(),
+                                ));
+                          },
+                          style: loginWithPhoneButtons(),
+                          child: Text(
+                            "Continue",
+                            style: loginWithPhoneText(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
