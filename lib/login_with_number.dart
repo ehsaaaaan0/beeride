@@ -1,9 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:beeride/ui_helper/card_style.dart';
 import 'package:beeride/main_home.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:beeride/ui_helper/button_styles.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,8 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+
+import 'base_client.dart';
 
 class LoginWithNumber extends StatelessWidget {
   var phoneNumber = TextEditingController();
@@ -572,7 +575,9 @@ class _CompleteProfileState extends State<CompleteProfile> {
     }
   }
 
-  var dateInput = TextEditingController();
+  final dateInput = TextEditingController();
+  final fullName = TextEditingController();
+  final bio = TextEditingController();
   int gender = 0;
 
   @override
@@ -659,7 +664,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -676,6 +681,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     child: Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: TextField(
+                        controller: fullName,
                         keyboardType: TextInputType.name,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
@@ -831,15 +837,16 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   margin: const EdgeInsets.only(top: 10),
                   elevation: 1,
                   shadowColor: Colors.black,
-                  child: const SizedBox(
+                  child: SizedBox(
                     width: double.infinity,
                     height: 101,
                     child: Padding(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: TextField(
+                          controller: bio,
                           keyboardType: TextInputType.multiline,
                           maxLines: 5,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText:
                                   "Example: i travel on weekends and would love to meet people and share rides",
@@ -857,10 +864,21 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
+                      String phoneNumber = phone;
+                      String name = fullName.text.toString();
+                      String bio_ = bio.text.toString();
+                      String dob = dateInput.text.toString();
+                      String gen;
+                      if (gender == 0) {
+                        gen = "female";
+                      } else {
+                        gen = "male";
+                      }
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HowWillUse(),
+                            builder: (context) =>
+                                HowWillUse(phoneNumber, name, bio_, dob, gen),
                           ));
                     },
                     child: Text(
@@ -883,13 +901,70 @@ class _CompleteProfileState extends State<CompleteProfile> {
 }
 
 class HowWillUse extends StatefulWidget {
+  String phoneNumber, name, bio_, dob, gen;
+  HowWillUse(String this.phoneNumber, String this.name, String this.bio_,
+      String this.dob, String this.gen,
+      {super.key});
+
   @override
-  State<HowWillUse> createState() => _HowWillUseState();
+  State<HowWillUse> createState() =>
+      _HowWillUseState(phoneNumber, name, bio_, dob, gen);
 }
 
 class _HowWillUseState extends State<HowWillUse> {
   var appName = "Canva";
   int select = 0;
+  String phoneNumber, name, bio, dob, gen;
+  var url = "https://poparide.canvasolutions.co.uk/public/api/show";
+  _HowWillUseState(String this.phoneNumber, String this.name, this.bio,
+      String this.dob, String this.gen);
+
+  // Future<void> getData() async{
+  //   var res = http.get(Uri.parse(url));
+  //   print("Repnse: ");
+  //   print(res);
+
+  register(String phoneNumber, name, bio, dob, gen) async {
+    Map data = {
+      'name': name,
+      'last_name': name,
+      'number': phoneNumber,
+      'email': "someone@gmail.com",
+      'roll_as': 'driver',
+      'password': "random",
+      'profilepicture': "random.jpg",
+      'birth_month': dob,
+      'birth_day': dob,
+      'birth_year': dob,
+      "description": bio,
+    };
+    print(data);
+
+    String body = json.encode(data);
+    var url = 'https://poparide.canvasolutions.co.uk/public/api/add';
+    var response = await http.post(
+      Uri.parse(url),
+      body: body,
+      headers: {
+        "Content-Type": "application/json",
+        "accept": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+    );
+    print(response.body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      //Or put here your next screen using Navigator.push() method
+      print('success');
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MainHomePage(),
+          ));
+    } else {
+      print('error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1030,11 +1105,17 @@ class _HowWillUseState extends State<HowWillUse> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MainHomePage(),
-                                ));
+                            register(phoneNumber, name, bio, dob, gen);
+                            // Base_Client.get("user");
+                            // var response  = await getData("showbooking").catchError((err){});
+                            // if(response==null) return;
+                            //   debugPrint("Success");
+
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => MainHomePage(),
+                            //     ));
                           },
                           style: loginWithPhoneButtons(),
                           child: Text(
