@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'package:beeride/ui_helper/card_style.dart';
 import 'package:beeride/main_home.dart';
 import 'package:flutter/services.dart';
@@ -856,7 +857,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                         )), //Padding
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 SizedBox(
@@ -864,31 +865,43 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
+                      print("pressed1");
                       String phoneNumber = phone;
-                      String name = fullName.text.toString();
+                      String name = fullName.text.toString().trim();
                       String bio_ = bio.text.toString();
                       String dob = dateInput.text.toString();
                       String gen;
+                      print("pressed2");
+                      var subString = name.split(" ");
+                      String firstName = subString[0];
+                      String secondName = subString[1];
+                      print("pressed3");
+                      var subTime = dob.split("-");
+                      String year = subTime[0];
+                      String month = subTime[1];
+                      String date = subTime[2];
+                      print("pressed4");
                       if (gender == 0) {
                         gen = "female";
                       } else {
                         gen = "male";
                       }
+                      print("pressed5");
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                HowWillUse(phoneNumber, name, bio_, dob, gen),
+                                HowWillUse(phoneNumber, firstName, secondName ,bio_, year,month,date, gen),
                           ));
                     },
+                    style: loginWithPhoneButtons(),
                     child: Text(
                       "Continue",
                       style: loginWithPhoneText(),
                     ),
-                    style: loginWithPhoneButtons(),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
               ],
@@ -901,41 +914,60 @@ class _CompleteProfileState extends State<CompleteProfile> {
 }
 
 class HowWillUse extends StatefulWidget {
-  String phoneNumber, name, bio_, dob, gen;
-  HowWillUse(String this.phoneNumber, String this.name, String this.bio_,
-      String this.dob, String this.gen,
+  String phoneNumber, firstName, lastName , bio_, year,month,date, gen;
+
+  HowWillUse(String this.phoneNumber, String this.firstName,String this.lastName, String this.bio_,
+      String this.year,String this.month, String this.date, String this.gen,
       {super.key});
 
   @override
   State<HowWillUse> createState() =>
-      _HowWillUseState(phoneNumber, name, bio_, dob, gen);
+      _HowWillUseState(phoneNumber, firstName, lastName , bio_, year,month,date, gen);
 }
 
 class _HowWillUseState extends State<HowWillUse> {
   var appName = "Canva";
   int select = 0;
-  String phoneNumber, name, bio, dob, gen;
-  var url = "https://poparide.canvasolutions.co.uk/public/api/show";
-  _HowWillUseState(String this.phoneNumber, String this.name, this.bio,
-      String this.dob, String this.gen);
+  String phoneNumber, firstName, lastName , bio, year,month,date, gen;
 
-  // Future<void> getData() async{
-  //   var res = http.get(Uri.parse(url));
-  //   print("Repnse: ");
-  //   print(res);
+  _HowWillUseState(String this.phoneNumber, String this.firstName,String this.lastName, this.bio,
+      String this.year, String this.month, String this.date, String this.gen);
 
-  register(String phoneNumber, name, bio, dob, gen) async {
+
+
+
+  register(String phoneNumber, firstName, lastName ,bio, year,month,date, gen, roll) async {
+    var rng = Random();
+    String e = '@gmail.com';
+    String news = String.fromCharCode(rng.nextInt(100000));
+    String email = news+e;
+    AlertDialog alert = AlertDialog(
+      content: Row(children: [
+        const CircularProgressIndicator(
+          backgroundColor: Colors.red,
+        ),
+        Container(margin: const EdgeInsets.only(left: 7), child: const Text("  Creating Account...")),
+      ]),
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
     Map data = {
-      'name': name,
-      'last_name': name,
+      'name': firstName,
+      'last_name': lastName,
       'number': phoneNumber,
-      'email': "someone@gmail.com",
-      'roll_as': 'driver',
+      'status': "pending",
+      'email': email,
+      'roll_as': roll,
       'password': "random",
       'profilepicture': "random.jpg",
-      'birth_month': dob,
-      'birth_day': dob,
-      'birth_year': dob,
+      'birth_month': month,
+      'birth_day': date,
+      'birth_year': year,
       "description": bio,
     };
     print(data);
@@ -954,7 +986,7 @@ class _HowWillUseState extends State<HowWillUse> {
     print(response.body);
     print(response.statusCode);
     if (response.statusCode == 200) {
-      //Or put here your next screen using Navigator.push() method
+      Navigator.pop(context);
       print('success');
       Navigator.push(
           context,
@@ -962,6 +994,7 @@ class _HowWillUseState extends State<HowWillUse> {
             builder: (context) => MainHomePage(),
           ));
     } else {
+      Navigator.pop(context);
       print('error');
     }
   }
@@ -1105,7 +1138,12 @@ class _HowWillUseState extends State<HowWillUse> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            register(phoneNumber, name, bio, dob, gen);
+                            if(select==1){
+
+                              register(phoneNumber, firstName,lastName, bio, year,month,date, gen,"driver");
+                            }else if(select==2){
+                              register(phoneNumber, firstName,lastName, bio, year,month,date, gen,"preesanger");
+                            }
                             // Base_Client.get("user");
                             // var response  = await getData("showbooking").catchError((err){});
                             // if(response==null) return;
