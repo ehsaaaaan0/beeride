@@ -18,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-import 'base_client.dart';
 
 class LoginWithNumber extends StatelessWidget {
   var phoneNumber = TextEditingController();
@@ -865,34 +864,65 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      print("pressed1");
                       String phoneNumber = phone;
                       String name = fullName.text.toString().trim();
-                      String bio_ = bio.text.toString();
-                      String dob = dateInput.text.toString();
+                      String bio_ = bio.text.toString().trim();
+                      String dob = dateInput.text.toString().trim();
                       String gen;
-                      print("pressed2");
-                      var subString = name.split(" ");
-                      String firstName = subString[0];
-                      String secondName = subString[1];
-                      print("pressed3");
-                      var subTime = dob.split("-");
-                      String year = subTime[0];
-                      String month = subTime[1];
-                      String date = subTime[2];
-                      print("pressed4");
-                      if (gender == 0) {
-                        gen = "female";
-                      } else {
-                        gen = "male";
+                      if(image==null ) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            duration: Duration(seconds: 5),
+                            content: Text('Please Select Image'),
+                          )
+                      );
+
+                      } else if(dob.isEmpty){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              duration: Duration(seconds: 5),
+                              content: Text('Please Select Date Of Birth'),
+                            )
+                        );
+                      }else if(gender!=0 || gender!=1){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              duration: Duration(seconds: 5),
+                              content: Text('Please Select Gender'),
+                            )
+                        );
+                      }else {
+                        print("pressed2");
+                        var subString = name.split(" ");
+                        String firstName = subString[0];
+                        String secondName = subString[1];
+                        print("pressed3");
+                        var subTime = dob.split("-");
+                        String year = subTime[0];
+                        String month = subTime[1];
+                        String date = subTime[2];
+                        print("pressed4");
+                        if (gender == 0) {
+                          gen = "female";
+                        } else {
+                          gen = "male";
+                        }
+                        print("pressed5");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  HowWillUse(
+                                      phoneNumber,
+                                      firstName,
+                                      secondName,
+                                      bio_,
+                                      year,
+                                      month,
+                                      date,
+                                      gen),
+                            ));
                       }
-                      print("pressed5");
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                HowWillUse(phoneNumber, firstName, secondName ,bio_, year,month,date, gen),
-                          ));
                     },
                     style: loginWithPhoneButtons(),
                     child: Text(
