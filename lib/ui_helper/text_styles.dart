@@ -113,3 +113,4 @@ TextStyle whiteDetailedText(){
     color: Color(0xffffffff),
   );
 }
+
