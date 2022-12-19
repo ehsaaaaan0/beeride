@@ -90,17 +90,12 @@ TextStyle smallSize(){
   );
 }
 
-TextStyle subHeadingGreen(){
-  return const TextStyle(
-      fontSize: 14, color: Color(0xff49a700),
-      fontFamily: "poppin_regular"
-  );
-}
 
-TextStyle whiteDetailedText(){
+
+TextStyle biotext(){
   return const TextStyle(
     fontFamily: "poppin_regular",
-    fontSize: 14,
-    color: Color(0xffffffff),
+    fontSize: 12,
+    color: Colors.black,
   );
 }
