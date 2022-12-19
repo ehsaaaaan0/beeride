@@ -5,6 +5,7 @@ import 'package:beeride/ui_helper/card_style.dart';
 import 'package:beeride/main_home.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:beeride/ui_helper/button_styles.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
@@ -884,7 +885,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                               content: Text('Please Select Date Of Birth'),
                             )
                         );
-                      }else if(gender!=0 || gender!=1){
+                      }else if(gender.isLowerThan(0)){
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               duration: Duration(seconds: 5),
@@ -920,7 +921,8 @@ class _CompleteProfileState extends State<CompleteProfile> {
                                       year,
                                       month,
                                       date,
-                                      gen),
+                                      gen,
+                                  image!),
                             ));
                       }
                     },
@@ -945,23 +947,24 @@ class _CompleteProfileState extends State<CompleteProfile> {
 
 class HowWillUse extends StatefulWidget {
   String phoneNumber, firstName, lastName , bio_, year,month,date, gen;
-
-  HowWillUse(String this.phoneNumber, String this.firstName,String this.lastName, String this.bio_,
-      String this.year,String this.month, String this.date, String this.gen,
+  File image;
+  HowWillUse( this.phoneNumber, this.firstName, this.lastName, this.bio_,
+       this.year, this.month, this.date, this.gen,  this.image,
       {super.key});
+
 
   @override
   State<HowWillUse> createState() =>
-      _HowWillUseState(phoneNumber, firstName, lastName , bio_, year,month,date, gen);
+      _HowWillUseState(phoneNumber, firstName, lastName , bio_, year,month,date, gen,image);
 }
 
 class _HowWillUseState extends State<HowWillUse> {
   var appName = "Canva";
   int select = 0;
   String phoneNumber, firstName, lastName , bio, year,month,date, gen;
-
+  File image;
   _HowWillUseState(String this.phoneNumber, String this.firstName,String this.lastName, this.bio,
-      String this.year, String this.month, String this.date, String this.gen);
+      String this.year, String this.month, String this.date, String this.gen, this.image);
 
 
 
@@ -994,7 +997,7 @@ class _HowWillUseState extends State<HowWillUse> {
       'email': email,
       'roll_as': roll,
       'password': "random",
-      'profilepicture': "random.jpg",
+      'profilepicture': "image.jpg",
       'birth_month': month,
       'birth_day': date,
       'birth_year': year,
@@ -1075,7 +1078,7 @@ class _HowWillUseState extends State<HowWillUse> {
                             style: pageHeading(),
                           ),
                           Text(
-                            "Let us know how you intent to use Canva, this helps us send you relevant communication",
+                            "Let us know how you intent to use $appName, this helps us send you relevant communication",
                             style: detailsSize(),
                           ),
                         ])),
@@ -1169,21 +1172,10 @@ class _HowWillUseState extends State<HowWillUse> {
                         child: ElevatedButton(
                           onPressed: () {
                             if(select==1){
-
                               register(phoneNumber, firstName,lastName, bio, year,month,date, gen,"driver");
                             }else if(select==2){
                               register(phoneNumber, firstName,lastName, bio, year,month,date, gen,"preesanger");
                             }
-                            // Base_Client.get("user");
-                            // var response  = await getData("showbooking").catchError((err){});
-                            // if(response==null) return;
-                            //   debugPrint("Success");
-
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => MainHomePage(),
-                            //     ));
                           },
                           style: loginWithPhoneButtons(),
                           child: Text(

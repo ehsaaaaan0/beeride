@@ -1,11 +1,14 @@
+import 'package:beeride/bottomnavigationPages/home.dart';
+import 'package:beeride/main_home.dart';
 import 'package:beeride/ui_helper/button_styles.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'login_with_number.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class Palette {
@@ -26,10 +29,10 @@ class Palette {
   );
 }
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -49,7 +52,9 @@ class MyApp extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
 
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: isLogged ==true?  MainHomePage() : const  MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MainHomePage(),
     );
   }
 }
@@ -64,6 +69,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  void initState(){
+
+    super.initState();
+
+  }
   var appName = "Canva";
   @override
   Widget build(BuildContext context) {
