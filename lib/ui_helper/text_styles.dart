@@ -89,3 +89,18 @@ TextStyle smallSize(){
     color: Colors.black,
   );
 }
+
+TextStyle subHeadingGreen(){
+  return const TextStyle(
+      fontSize: 14, color: Color(0xff49a700),
+      fontFamily: "poppin_regular"
+  );
+}
+
+TextStyle whiteDetailedText(){
+  return const TextStyle(
+    fontFamily: "poppin_regular",
+    fontSize: 14,
+    color: Color(0xffffffff),
+  );
+}
