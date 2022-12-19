@@ -40,11 +40,11 @@ class Driver_profile extends StatelessWidget{
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                      Icon(Icons.arrow_back, size: 40,),
+                      InkWell( onTap: () => Navigator.pop(context), child: Icon(Icons.arrow_back, size: 30,)),
                      
                         Expanded(
                             child: Center(
-                                child: Text('Khubaib Profile', style: pageHeading(),))),
+                                child: Text('Khubaib Profile', style: pageName(),))),
                     
                     ],),
                   ),

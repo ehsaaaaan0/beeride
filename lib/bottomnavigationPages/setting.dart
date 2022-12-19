@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../driver_profile.dart';
 import '../personal_details.dart';
+import '../preferences.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -35,12 +36,12 @@ class SettingPage extends StatelessWidget {
                   width: width,height: 65,
                   margin: const EdgeInsets.only(left: 20,right: 20),
                   child: Row(
-                    children:   const [
-                      SizedBox(height: 46,width: 46,child:
+                    children:    [
+                      const SizedBox(height: 46,width: 46,child:
                         CircleAvatar(backgroundImage: AssetImage("assets/images/profile.jpg"),),),
-                      SizedBox(width: 20,),
-                      Expanded(child: Text("View profile",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 16, color: Colors.black),)),
-                      Expanded(child: Positioned( right: 2, child: Icon(Icons.arrow_forward_sharp, size: 30,)))
+                      const SizedBox(width: 20,),
+                      const Expanded(child: Text("View profile",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 16, color: Colors.black),)),
+                     Expanded(child: Container(alignment: Alignment.centerRight,child: const Icon(Icons.arrow_forward_sharp, size: 30,)))
                     ],
                   ),
                 ),),),
@@ -59,16 +60,19 @@ class SettingPage extends StatelessWidget {
                     ),
                   ),),
                 ),
-                Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
-                  width: width,height: 60,
-                  margin: const EdgeInsets.only(left: 20,right: 20),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text("Preferences",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
-                      Icon(Icons.arrow_forward_sharp, size: 25,)
-                    ],
-                  ),
-                ),),
+                InkWell(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Preferences(),)),
+                  child: Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
+                    width: width,height: 60,
+                    margin: const EdgeInsets.only(left: 20,right: 20),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text("Preferences",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
+                        Icon(Icons.arrow_forward_sharp, size: 25,)
+                      ],
+                    ),
+                  ),),
+                ),
                 Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
                   width: width,height: 60,
                   margin: const EdgeInsets.only(left: 20,right: 20),
