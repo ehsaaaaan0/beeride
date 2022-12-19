@@ -86,6 +86,13 @@ TextStyle whiteText(){
     color: Color(0xffffffff),
   );
 }
+TextStyle biotext(){
+  return const TextStyle(
+    fontFamily: "poppin_regular",
+    fontSize: 12,
+    color: Colors.black,
+  );
+}
 
 
 TextStyle smallSize(){
