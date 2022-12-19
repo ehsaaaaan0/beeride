@@ -1,12 +1,23 @@
+import 'package:beeride/request_a_trip/trip_preview.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ViewMatches extends StatelessWidget {
-  var names = ["Babar Azam", "kanwal"];
-  var review = ["We felt comfertale and enjoyed the tripe, Ashley was very accomodating We felt comfertale and enjoyed the tripe, Ashley was very accomodating  ","We felt comfertale and enjoyed the tripe, Ashley was very accomodating We felt comfertale and enjoyed the tripe, Ashley was very accomodating  "];
-  var images = [Image.asset("assets/images/profile.png", height: 100,width: 100,),Image.asset("assets/images/profile.jpg",height: 100,width: 100,)];
-
+  var names = ["Babar", "kanwal"];
+  var rating = ["5.0","4.5"];
+  var rides = ["258","100"];
+  var images = [Image.asset("assets/images/car1.png", height: 50,width: 90,),Image.asset("assets/images/car2.png",height: 50,width: 90,)];
+  var date = ["Tomorrow at 6:30 am","Tomorrow at 4:30 am"];
+  var orign = "Calgary";
+  var destination = "Banff";
+  var images_profile = [const CircleAvatar(
+    backgroundImage: AssetImage(
+        "assets/images/profile.jpg"),
+  ),const CircleAvatar(
+    backgroundImage: AssetImage(
+        "assets/images/profile.png"),
+  ),];
   @override
   Widget build(BuildContext context) {
     var status = MediaQuery.of(context).viewPadding.top;
@@ -30,19 +41,182 @@ class ViewMatches extends StatelessWidget {
                 ],),
                 Expanded(child:
                 ListView.builder(itemBuilder: (context, index) {
-                  return Container(margin: EdgeInsets.only(top:20),width: double.infinity,child:Row(crossAxisAlignment: CrossAxisAlignment.start,children:[
-                    images[index],
-                    Expanded(
-                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,children: [
-                        Text(names[index], style: const TextStyle(fontFamily: "poppin_regular",fontSize: 16, color: Colors.black)),
-                        Container(width: double.infinity,child: Text(review[index],maxLines: 100,overflow: TextOverflow.ellipsis ,style: const TextStyle(fontFamily: "poppin_regular",fontSize: 12, color: Color(0xff767676)))),
-                      ],),
-                    )
-                  ]));
-                },itemCount: names.length,),),
+                  return InkWell(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => TripPreview(),)),
+                    child: Container(
+                        height: 200,
+                        width: width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        margin: EdgeInsets.only(top: 20),
+                        child: Stack(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      width: 80,
+                                      height: 100,
+                                      child: Stack(
+                                        alignment: AlignmentDirectional.topEnd,
+                                        children:  [
+                                          Positioned(
+                                              top: 0,
+                                              left: -55,
+                                              child: SizedBox(
+                                                height: 90,
+                                                width: 170,
+                                                child: CircleAvatar(
+                                                  backgroundImage: AssetImage(
+                                                      "assets/images/top_right.png"),
+                                                ),
+                                              ) //Icon
+                                          ),
+                                          Positioned(
+                                              top: 5,
+                                              left: -50,
+                                              child: SizedBox(
+                                                height: 80,
+                                                width: 160,
+                                                child: images_profile[index],
+                                              ))
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                        child: Row(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                              height: height / 7,
+                                              alignment: Alignment.center,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        names[index],
+                                                        style: pageHeading(),
+                                                      ),
+                                                      Image.asset(
+                                                        "assets/images/verify.png",
+                                                        height: 17,
+                                                        width: 17,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      const Icon(
+                                                        Icons.star,
+                                                        color: Color(0xfff1ad00),
+                                                      ),
+                                                      Text(
+                                                        rating[index],
+                                                        style: subHeading(),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 9,
+                                                      ),
+                                                      Text(
+                                                        rides[index]+" driven",
+                                                        style: subHeading(),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                  ],
+                                ),
+                                Expanded(
+                                    child: Container(
+                                      margin:
+                                      const EdgeInsets.only(left: 20, right: 20),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            date[index],
+                                            style: subHeading(),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                orign,
+                                                style: yellowText(),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                "$orign , AB, Canada",
+                                                style: offWhiteText(),
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                destination,
+                                                style: yellowText(),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                "$destination, AB, Canada",
+                                                style: offWhiteText(),
+                                              )
+                                            ],
+                                          ),
 
-                
-                
+                                        ],
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            Positioned(top: 0,right: 0,child:
+                            Container(decoration: BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(20))),child: images[index],),),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: Container(
+                                height: 40,
+                                width: 120,
+                                alignment: Alignment.center,
+                                decoration: const BoxDecoration(
+                                  color: Color(0xfff1ad00),
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(20),
+                                      topLeft: Radius.circular(20)),
+                                ),
+                                child: Text(
+                                  "1 Seat left 18\$",
+                                  style: whiteText(),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                  );
+                },itemCount: 2,),),
+
+
+
               ],),
             ),
           ),

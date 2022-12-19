@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 import 'package:beeride/ui_helper/card_style.dart';
 import 'package:beeride/main_home.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 import 'package:beeride/ui_helper/button_styles.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +18,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+
 
 class LoginWithNumber extends StatelessWidget {
   var phoneNumber = TextEditingController();
@@ -572,7 +576,9 @@ class _CompleteProfileState extends State<CompleteProfile> {
     }
   }
 
-  var dateInput = TextEditingController();
+  final dateInput = TextEditingController();
+  final fullName = TextEditingController();
+  final bio = TextEditingController();
   int gender = 0;
 
   @override
@@ -659,7 +665,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -676,6 +682,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     child: Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: TextField(
+                        controller: fullName,
                         keyboardType: TextInputType.name,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
@@ -831,15 +838,16 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   margin: const EdgeInsets.only(top: 10),
                   elevation: 1,
                   shadowColor: Colors.black,
-                  child: const SizedBox(
+                  child: SizedBox(
                     width: double.infinity,
                     height: 101,
                     child: Padding(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: TextField(
+                          controller: bio,
                           keyboardType: TextInputType.multiline,
                           maxLines: 5,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               border: InputBorder.none,
                               hintText:
                                   "Example: i travel on weekends and would love to meet people and share rides",
@@ -849,7 +857,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                         )), //Padding
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 SizedBox(
@@ -857,20 +865,75 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HowWillUse(),
-                          ));
+                      String phoneNumber = phone;
+                      String name = fullName.text.toString().trim();
+                      String bio_ = bio.text.toString().trim();
+                      String dob = dateInput.text.toString().trim();
+                      String gen;
+                      if(image==null ) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            duration: Duration(seconds: 5),
+                            content: Text('Please Select Image'),
+                          )
+                      );
+
+                      } else if(dob.isEmpty){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              duration: Duration(seconds: 5),
+                              content: Text('Please Select Date Of Birth'),
+                            )
+                        );
+                      }else if(gender.isLowerThan(0)){
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              duration: Duration(seconds: 5),
+                              content: Text('Please Select Gender'),
+                            )
+                        );
+                      }else {
+                        print("pressed2");
+                        var subString = name.split(" ");
+                        String firstName = subString[0];
+                        String secondName = subString[1];
+                        print("pressed3");
+                        var subTime = dob.split("-");
+                        String year = subTime[0];
+                        String month = subTime[1];
+                        String date = subTime[2];
+                        print("pressed4");
+                        if (gender == 0) {
+                          gen = "female";
+                        } else {
+                          gen = "male";
+                        }
+                        print("pressed5");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  HowWillUse(
+                                      phoneNumber,
+                                      firstName,
+                                      secondName,
+                                      bio_,
+                                      year,
+                                      month,
+                                      date,
+                                      gen,
+                                  image!),
+                            ));
+                      }
                     },
+                    style: loginWithPhoneButtons(),
                     child: Text(
                       "Continue",
                       style: loginWithPhoneText(),
                     ),
-                    style: loginWithPhoneButtons(),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
               ],
@@ -883,13 +946,91 @@ class _CompleteProfileState extends State<CompleteProfile> {
 }
 
 class HowWillUse extends StatefulWidget {
+  String phoneNumber, firstName, lastName , bio_, year,month,date, gen;
+  File image;
+  HowWillUse( this.phoneNumber, this.firstName, this.lastName, this.bio_,
+       this.year, this.month, this.date, this.gen,  this.image,
+      {super.key});
+
+
   @override
-  State<HowWillUse> createState() => _HowWillUseState();
+  State<HowWillUse> createState() =>
+      _HowWillUseState(phoneNumber, firstName, lastName , bio_, year,month,date, gen,image);
 }
 
 class _HowWillUseState extends State<HowWillUse> {
   var appName = "Canva";
   int select = 0;
+  String phoneNumber, firstName, lastName , bio, year,month,date, gen;
+  File image;
+  _HowWillUseState(String this.phoneNumber, String this.firstName,String this.lastName, this.bio,
+      String this.year, String this.month, String this.date, String this.gen, this.image);
+
+
+
+
+  register(String phoneNumber, firstName, lastName ,bio, year,month,date, gen, roll) async {
+    var rng = Random();
+    String e = '@gmail.com';
+    String news = String.fromCharCode(rng.nextInt(100000));
+    String email = news+e;
+    AlertDialog alert = AlertDialog(
+      content: Row(children: [
+        const CircularProgressIndicator(
+          backgroundColor: Colors.red,
+        ),
+        Container(margin: const EdgeInsets.only(left: 7), child: const Text("  Creating Account...")),
+      ]),
+    );
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+    Map data = {
+      'name': firstName,
+      'last_name': lastName,
+      'number': phoneNumber,
+      'status': "pending",
+      'email': email,
+      'roll_as': roll,
+      'password': "random",
+      'profilepicture': "image.jpg",
+      'birth_month': month,
+      'birth_day': date,
+      'birth_year': year,
+      "description": bio,
+    };
+    print(data);
+
+    String body = json.encode(data);
+    var url = 'https://poparide.canvasolutions.co.uk/public/api/add';
+    var response = await http.post(
+      Uri.parse(url),
+      body: body,
+      headers: {
+        "Content-Type": "application/json",
+        "accept": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+    );
+    print(response.body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      Navigator.pop(context);
+      print('success');
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MainHomePage(),
+          ));
+    } else {
+      Navigator.pop(context);
+      print('error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -937,7 +1078,7 @@ class _HowWillUseState extends State<HowWillUse> {
                             style: pageHeading(),
                           ),
                           Text(
-                            "Let us know how you intent to use Canva, this helps us send you relevant communication",
+                            "Let us know how you intent to use $appName, this helps us send you relevant communication",
                             style: detailsSize(),
                           ),
                         ])),
@@ -1030,11 +1171,11 @@ class _HowWillUseState extends State<HowWillUse> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MainHomePage(),
-                                ));
+                            if(select==1){
+                              register(phoneNumber, firstName,lastName, bio, year,month,date, gen,"driver");
+                            }else if(select==2){
+                              register(phoneNumber, firstName,lastName, bio, year,month,date, gen,"preesanger");
+                            }
                           },
                           style: loginWithPhoneButtons(),
                           child: Text(
