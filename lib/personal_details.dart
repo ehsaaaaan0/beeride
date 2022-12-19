@@ -284,20 +284,6 @@ return Scaffold(
          height: 40,
          child: Center(child: Text('Update', style:whiteText(),)),
        ),
-
-
-       //practice
-       Container(
-         padding: EdgeInsets.only(right: 5, left: 5),
-         height: 100,
-         child:
-         TextFormField(
-           maxLines: 10,
-           // textAlignVertical: TextAlignVertical.top,
-           decoration: Box
-
-         ),
-       ),
        SizedBox(height: 20,),
      ],
     ),
