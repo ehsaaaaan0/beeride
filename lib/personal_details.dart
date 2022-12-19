@@ -30,56 +30,77 @@ return Scaffold(
          child: Row(
            mainAxisAlignment: MainAxisAlignment.start,
            children: [
-             Icon(Icons.arrow_back, size: 40,),
+             InkWell(onTap: (){
+               Navigator.pop(context);
+             },child: Icon(Icons.arrow_back, size: 30,)),
 
              Expanded(
                  child: Center(
-                     child: Text('Personal details', style: pageHeading(),))),
+                     child: Text('Personal details',  style: pageName(),))),
 
            ],),
        ),
        Container(
          padding: EdgeInsets.all(5),
-
          child:
-             Text('Phone number'),
+             Text('Phone number', style: subHeading(),),
        ),
        Container(
-         padding: EdgeInsets.all(5),
+         margin: EdgeInsets.all(5),
+         padding: EdgeInsets.only(right: 5, left: 5),
+         decoration: BoxDecoration(
+
+             borderRadius: BorderRadius.circular(12),
+             color: Colors.white,
+             boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)]
+         ),
          child:
          TextFormField(
            decoration: InputDecoration(
-             fillColor: Color(0xffFFFFFF),
-               border: OutlineInputBorder(),
-               contentPadding: EdgeInsets.symmetric(horizontal: 10),
+               border: InputBorder.none,
+               contentPadding: EdgeInsets.only(right: 10, left: 10),
+               hintStyle: detailsHintSize(),
                hintText: '+92 0334 8726398'
            ),
          ),
        ),
-       SizedBox(height: 10,),
+       SizedBox(height: 20,),
        Container(
          padding: EdgeInsets.all(10),
-         color: Color(0xff0073C2),
+         decoration: BoxDecoration(
+             borderRadius: BorderRadius.circular(12),
+             //border: Border.all(width: 1, color: Colors.white,),
+             color: Color(0xff71B9EB),
+             boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)]
+         ),
+
          child: Text('Please note: You can verfiy your name '
              'by uploading a piece og office ID. Being verified'
              ' makes you more trustworthy and appealing to other '
-             'users as both a driver  and passenger!'),
+             'users as both a driver  and passenger!', style: detailsSize(),),
        ),
+       SizedBox(height: 10,),
        Container(
          padding: EdgeInsets.all(5),
 
          child:
-         Text('First Name'),
+         Text('First Name', style: subHeading(),),
        ),
        Container(
-         padding: EdgeInsets.all(5),
+         margin: EdgeInsets.all(5),
+         padding: EdgeInsets.only(right: 5, left: 5),
+         decoration: BoxDecoration(
+
+             borderRadius: BorderRadius.circular(12),
+             color: Colors.white,
+             boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)]
+         ),
          child:
          TextFormField(
-
-           decoration:
-           InputDecoration(
-               border: OutlineInputBorder(),
-               contentPadding: EdgeInsets.symmetric(horizontal: 10),
+           decoration: InputDecoration(
+               border: InputBorder.none,
+               contentPadding: EdgeInsets.only(right: 10, left: 10),
+               hintStyle: detailsHintSize(),
                hintText: 'Jennifer'
            ),
          ),
@@ -88,55 +109,75 @@ return Scaffold(
          padding: EdgeInsets.all(5),
 
          child:
-         Text('Last Name'),
+         Text('Last Name', style: subHeading(),),
        ),
        Container(
-        padding: EdgeInsets.all(5),
+         margin: EdgeInsets.all(5),
+         padding: EdgeInsets.only(right: 5, left: 5),
+         decoration: BoxDecoration(
+
+             borderRadius: BorderRadius.circular(12),
+             color: Colors.white,
+             boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)]
+         ),
          child:
          TextFormField(
            decoration: InputDecoration(
-               border: OutlineInputBorder(),
-               contentPadding: EdgeInsets.symmetric(horizontal: 10),
-               hintText: 'Lopes',
+               border: InputBorder.none,
+               contentPadding: EdgeInsets.only(right: 10, left: 10),
+               hintStyle: detailsHintSize(),
+               hintText: 'Lopes'
            ),
-
          ),
        ),
        Container(
          padding: EdgeInsets.all(5),
-         child: Text('Date of Birth'),
+         child: Text('Date of Birth', style: subHeading(),),
        ),
        Container(
-         padding: EdgeInsets.all(5),
-
-
+         height: 50,
+         margin: EdgeInsets.all(5),
+         padding: EdgeInsets.only(right: 5, left: 5),
+         decoration: BoxDecoration(
+             borderRadius: BorderRadius.circular(12),
+             color: Colors.white,
+             boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)],
+         ),
        ),
        Container(
          padding: EdgeInsets.all(5),
 
          child:
-         Text('Bio'),
+         Text('Bio', style: subHeading(),),
        ),
        Container(
-          padding: EdgeInsets.only(right: 5, left: 5),
          height: 100,
+         margin: EdgeInsets.all(5),
+         padding: EdgeInsets.only(right: 5, left: 5),
+         decoration: BoxDecoration(
+
+             borderRadius: BorderRadius.circular(12),
+             color: Colors.white,
+             boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)]
+         ),
          child:
          TextFormField(
            maxLines: 10,
-          // textAlignVertical: TextAlignVertical.top,
            decoration: InputDecoration(
-             border: OutlineInputBorder(),
-             hintText: 'Example: i travel on weekends and '
-                 'would love to meet people and share rides'
+               border: InputBorder.none,
+               contentPadding: EdgeInsets.only(right: 10, left: 10),
+               hintStyle: detailsHintSize(),
+               hintText: 'Example: i travel on weekends and would '
+                   'love to meet people and share rides'
            ),
-
          ),
        ),
+       SizedBox(height: 10,),
        Container(
          padding: EdgeInsets.all(5),
 
          child:
-         Text('Select grender'),
+         Text('Select grender', style: subHeading(),),
        ),
        SizedBox(height: 10,),
        Container(
@@ -208,7 +249,7 @@ return Scaffold(
          padding: EdgeInsets.all(5),
 
          child:
-         Text('User type'),
+         Text('User type', style: subHeading(),),
        ),
        SizedBox(height: 10,),
        Container(
@@ -276,12 +317,13 @@ return Scaffold(
            ],
          ),
        ),
+       SizedBox(height: 20,),
        Container(
          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
            color: Colors.black,),
-         margin: new EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+         margin: EdgeInsets.all(5),
          width: double.infinity,
-         height: 40,
+         height: 50,
          child: Center(child: Text('Update', style:whiteText(),)),
        ),
        SizedBox(height: 20,),
