@@ -137,8 +137,8 @@ class Driver_profile extends StatelessWidget{
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                               Text('114', style: smalltext(),),
-                                Text('people driven',style: smalltext(),),
+                               Text('114', style: smallSize(),),
+                                Text('people driven',style: smallSize(),),
                               ],
                             ),
                           ],
@@ -149,8 +149,8 @@ class Driver_profile extends StatelessWidget{
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('2',style: smalltext(),),
-                                Text('Rides taken',style: smalltext(),),
+                                Text('2',style: smallSize(),),
+                                Text('Rides taken',style: smallSize(),),
                               ],
                             ),
                           ],
@@ -161,8 +161,8 @@ class Driver_profile extends StatelessWidget{
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('2204',style: smalltext(),),
-                                Text('Km started',style: smalltext(),),
+                                Text('2204',style: smallSize(),),
+                                Text('Km started',style: smallSize(),),
                               ],
                             ),
                           ],

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../driver_profile.dart';
+import '../personal_details.dart';
+
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
 
@@ -28,7 +31,7 @@ class SettingPage extends StatelessWidget {
                  ),
 
                 const SizedBox(height: 30,),
-                Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
+                InkWell( onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Driver_profile(),)), child: Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
                   width: width,height: 65,
                   margin: const EdgeInsets.only(left: 20,right: 20),
                   child: Row(
@@ -40,19 +43,22 @@ class SettingPage extends StatelessWidget {
                       Expanded(child: Positioned( right: 2, child: Icon(Icons.arrow_forward_sharp, size: 30,)))
                     ],
                   ),
-                ),),
+                ),),),
                 SizedBox(height:20),
 
-                Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
-                  width: width,height: 60,
-                  margin: const EdgeInsets.only(left: 20,right: 20),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text("Personal details",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
-                      Icon(Icons.arrow_forward_sharp, size: 25,)
-                    ],
-                  ),
-                ),),
+                InkWell(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Personal_details(),)),
+                  child: Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
+                    width: width,height: 60,
+                    margin: const EdgeInsets.only(left: 20,right: 20),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text("Personal details",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
+                        Icon(Icons.arrow_forward_sharp, size: 25,)
+                      ],
+                    ),
+                  ),),
+                ),
                 Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
                   width: width,height: 60,
                   margin: const EdgeInsets.only(left: 20,right: 20),
