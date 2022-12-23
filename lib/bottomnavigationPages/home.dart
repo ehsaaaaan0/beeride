@@ -57,42 +57,42 @@ class HomePage extends StatelessWidget {
                       ),
                       Expanded(
                           child: Stack(
-                        alignment: AlignmentDirectional.topEnd,
-                        children: [
-                          Container(
-                            width: width / 2,
-                            height: 190,
-                            child: Stack(
-                              alignment: AlignmentDirectional.topEnd,
-                              children: const [
-                                Positioned(
-                                    top: -45,
-                                    right: -25,
-                                    child: SizedBox(
-                                      height: 240,
-                                      width: 190,
-                                      child: CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            "assets/images/top_right.png"),
-                                      ),
-                                    ) //Icon
+                            alignment: AlignmentDirectional.topEnd,
+                            children: [
+                              Container(
+                                width: width / 2,
+                                height: 190,
+                                child: Stack(
+                                  alignment: AlignmentDirectional.topEnd,
+                                  children: const [
+                                    Positioned(
+                                        top: -45,
+                                        right: -25,
+                                        child: SizedBox(
+                                          height: 240,
+                                          width: 190,
+                                          child: CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                                "assets/images/top_right.png"),
+                                          ),
+                                        ) //Icon
                                     ),
-                                Positioned(
-                                    top: -50,
-                                    right: -20,
-                                    child: SizedBox(
-                                      height: 250,
-                                      width: 180,
-                                      child: CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            "assets/images/profile.jpg"),
-                                      ),
-                                    ))
-                              ],
-                            ),
-                          )
-                        ],
-                      ))
+                                    Positioned(
+                                        top: -50,
+                                        right: -20,
+                                        child: SizedBox(
+                                          height: 250,
+                                          width: 180,
+                                          child: CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                                "assets/images/profile.jpg"),
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              )
+                            ],
+                          ))
                     ],
                   ),
                   Column(
@@ -113,7 +113,7 @@ class HomePage extends StatelessWidget {
                                       left: 20, right: 10),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         "Search for places...",
@@ -191,11 +191,11 @@ class HomePage extends StatelessWidget {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           "When new trip matches your travel ",
@@ -253,11 +253,11 @@ class HomePage extends StatelessWidget {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           "Let others know about your plan so ",
@@ -313,11 +313,11 @@ class HomePage extends StatelessWidget {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           "Find a ride and carpool anywhere in ",
