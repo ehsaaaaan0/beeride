@@ -11,6 +11,7 @@ class _Personal_detailsState extends State<Personal_details> {
   int _type=1;
   @override
   Widget build(BuildContext context) {
+
     var status = MediaQuery.of(context).viewPadding.top;
     var mqwidth = MediaQuery.of(context).size.width;
     var mqheight = MediaQuery.of(context).size.height - status;
@@ -327,6 +328,7 @@ return Scaffold(
          child: Center(child: Text('Update', style:whiteText(),)),
        ),
        SizedBox(height: 20,),
+
      ],
     ),
     ),

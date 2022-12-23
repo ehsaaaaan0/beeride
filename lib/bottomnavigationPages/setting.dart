@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import '../driver_profile.dart';
 import '../personal_details.dart';
 import '../preferences.dart';
+import '../setting/add_vehicle.dart';
+import '../setting/email.dart';
+import '../setting/email_address.dart';
+import '../setting/password.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -73,36 +77,51 @@ class SettingPage extends StatelessWidget {
                     ),
                   ),),
                 ),
-                Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
-                  width: width,height: 60,
-                  margin: const EdgeInsets.only(left: 20,right: 20),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text("Vehicles",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
-                      Icon(Icons.arrow_forward_sharp, size: 25,)
-                    ],
-                  ),
-                ),),
-                Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
-                  width: width,height: 60,
-                  margin: const EdgeInsets.only(left: 20,right: 20),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text("Email address",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
-                      Icon(Icons.arrow_forward_sharp, size: 25,)
-                    ],
-                  ),
-                ),),
-                Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
-                  width: width,height: 60,
-                  margin: const EdgeInsets.only(left: 20,right: 20),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text("Chnage password",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
-                      Icon(Icons.arrow_forward_sharp, size: 25,)
-                    ],
-                  ),
-                ),),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Add_vehicle(),));
+                  },
+                  child: Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
+                    width: width,height: 60,
+                    margin: const EdgeInsets.only(left: 20,right: 20),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text("Vehicles",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
+                        Icon(Icons.arrow_forward_sharp, size: 25,)
+                      ],
+                    ),
+                  ),),
+                ),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Email(),));
+                  },
+                  child: Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
+                    width: width,height: 60,
+                    margin: const EdgeInsets.only(left: 20,right: 20),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text("Email address",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
+                        Icon(Icons.arrow_forward_sharp, size: 25,)
+                      ],
+                    ),
+                  ),),
+                ),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Password(),));
+                  },
+                  child: Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
+                    width: width,height: 60,
+                    margin: const EdgeInsets.only(left: 20,right: 20),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text("Chnage password",style: TextStyle(fontFamily: "poppin_semibold", fontSize: 14, color: Colors.black),),
+                        Icon(Icons.arrow_forward_sharp, size: 25,)
+                      ],
+                    ),
+                  ),),
+                ),
 
               ],
             ),
