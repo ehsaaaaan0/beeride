@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:path/path.dart' as Path;
+import 'package:async/async.dart';
 import 'package:beeride/ui_helper/button_styles.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,7 +20,6 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
 
 class LoginWithNumber extends StatelessWidget {
   var phoneNumber = TextEditingController();
@@ -133,11 +134,11 @@ class LoginWithNumber extends StatelessWidget {
                                   builder: (context) => OnBoarding(phone),
                                 ));
                           },
+                          style: loginWithPhoneButtons(),
                           child: Text(
                             "Continue",
                             style: loginWithPhoneText(),
                           ),
-                          style: loginWithPhoneButtons(),
                         ),
                       ),
                       SizedBox(
@@ -320,14 +321,14 @@ class OnBoarding extends StatelessWidget {
                                   builder: (context) => ReviewPicture(phone),
                                 ));
                           },
+                          style: loginWithPhoneButtons(),
                           child: Text(
                             "I agree",
                             style: loginWithPhoneText(),
                           ),
-                          style: loginWithPhoneButtons(),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                     ],
@@ -493,7 +494,7 @@ class ReviewPicture extends StatelessWidget {
                                 height: 35,
                                 width: 60,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 30,
                               ),
                               Expanded(
@@ -531,11 +532,11 @@ class ReviewPicture extends StatelessWidget {
                                 builder: (context) => CompleteProfile(phone),
                               ));
                         },
+                        style: loginWithPhoneButtons(),
                         child: Text(
                           "I agree",
                           style: loginWithPhoneText(),
                         ),
-                        style: loginWithPhoneButtons(),
                       ),
                     ),
                   ],
@@ -621,7 +622,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   "Add a profile photo name and bio to let other people know who you are",
                   style: detailsSize(),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
@@ -653,12 +654,12 @@ class _CompleteProfileState extends State<CompleteProfile> {
                                 onPressed: () {},
                                 elevation: 2.0,
                                 fillColor: Color(0xffffcd4e),
-                                child: Icon(
+                                padding: const EdgeInsets.all(5.0),
+                                shape: const CircleBorder(),
+                                child: const Icon(
                                   Icons.camera_alt_outlined,
                                   color: Colors.white,
                                 ),
-                                padding: EdgeInsets.all(5.0),
-                                shape: CircleBorder(),
                               )),
                         ],
                       ),
@@ -870,29 +871,25 @@ class _CompleteProfileState extends State<CompleteProfile> {
                       String bio_ = bio.text.toString().trim();
                       String dob = dateInput.text.toString().trim();
                       String gen;
-                      if(image==null ) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            duration: Duration(seconds: 5),
-                            content: Text('Please Select Image'),
-                          )
-                      );
-
-                      } else if(dob.isEmpty){
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              duration: Duration(seconds: 5),
-                              content: Text('Please Select Date Of Birth'),
-                            )
-                        );
-                      }else if(gender.isLowerThan(0)){
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              duration: Duration(seconds: 5),
-                              content: Text('Please Select Gender'),
-                            )
-                        );
-                      }else {
+                      if (image == null) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          duration: Duration(seconds: 5),
+                          content: Text('Please Select Image'),
+                        ));
+                      } else if (dob.isEmpty) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          duration: Duration(seconds: 5),
+                          content: Text('Please Select Date Of Birth'),
+                        ));
+                      } else if (gender.isLowerThan(0)) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                          duration: Duration(seconds: 5),
+                          content: Text('Please Select Gender'),
+                        ));
+                      } else {
                         print("pressed2");
                         var subString = name.split(" ");
                         String firstName = subString[0];
@@ -912,16 +909,15 @@ class _CompleteProfileState extends State<CompleteProfile> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  HowWillUse(
-                                      phoneNumber,
-                                      firstName,
-                                      secondName,
-                                      bio_,
-                                      year,
-                                      month,
-                                      date,
-                                      gen,
+                              builder: (context) => HowWillUse(
+                                  phoneNumber,
+                                  firstName,
+                                  secondName,
+                                  bio_,
+                                  year,
+                                  month,
+                                  date,
+                                  gen,
                                   image!),
                             ));
                       }
@@ -946,40 +942,49 @@ class _CompleteProfileState extends State<CompleteProfile> {
 }
 
 class HowWillUse extends StatefulWidget {
-  String phoneNumber, firstName, lastName , bio_, year,month,date, gen;
+  String phoneNumber, firstName, lastName, bio_, year, month, date, gen;
   File image;
-  HowWillUse( this.phoneNumber, this.firstName, this.lastName, this.bio_,
-       this.year, this.month, this.date, this.gen,  this.image,
+
+  HowWillUse(this.phoneNumber, this.firstName, this.lastName, this.bio_,
+      this.year, this.month, this.date, this.gen, this.image,
       {super.key});
 
-
   @override
-  State<HowWillUse> createState() =>
-      _HowWillUseState(phoneNumber, firstName, lastName , bio_, year,month,date, gen,image);
+  State<HowWillUse> createState() => _HowWillUseState(
+      phoneNumber, firstName, lastName, bio_, year, month, date, gen, image);
 }
 
 class _HowWillUseState extends State<HowWillUse> {
   var appName = "Canva";
   int select = 0;
-  String phoneNumber, firstName, lastName , bio, year,month,date, gen;
+  String phoneNumber, firstName, lastName, bio, year, month, date, gen;
   File image;
-  _HowWillUseState(String this.phoneNumber, String this.firstName,String this.lastName, this.bio,
-      String this.year, String this.month, String this.date, String this.gen, this.image);
 
+  _HowWillUseState(
+      String this.phoneNumber,
+      String this.firstName,
+      String this.lastName,
+      this.bio,
+      String this.year,
+      String this.month,
+      String this.date,
+      String this.gen,
+      this.image);
 
-
-
-  register(String phoneNumber, firstName, lastName ,bio, year,month,date, gen, roll) async {
+  register(String phoneNumber, firstName, lastName, bio, year, month, date, gen,
+      roll, image) async {
     var rng = Random();
     String e = '@gmail.com';
     String news = String.fromCharCode(rng.nextInt(100000));
-    String email = news+e;
+    String email = news + e;
     AlertDialog alert = AlertDialog(
       content: Row(children: [
         const CircularProgressIndicator(
           backgroundColor: Colors.red,
         ),
-        Container(margin: const EdgeInsets.only(left: 7), child: const Text("  Creating Account...")),
+        Container(
+            margin: const EdgeInsets.only(left: 7),
+            child: const Text("  Creating Account...")),
       ]),
     );
     showDialog(
@@ -989,6 +994,8 @@ class _HowWillUseState extends State<HowWillUse> {
         return alert;
       },
     );
+    var url = 'https://poparide.canvasolutions.co.uk/public/api/add';
+    Uri uri = Uri.parse(url);
     Map data = {
       'name': firstName,
       'last_name': lastName,
@@ -997,18 +1004,17 @@ class _HowWillUseState extends State<HowWillUse> {
       'email': email,
       'roll_as': roll,
       'password': "random",
-      'profilepicture': "image.jpg",
+      'profilepicture': image,
       'birth_month': month,
       'birth_day': date,
       'birth_year': year,
       "description": bio,
     };
     print(data);
-
     String body = json.encode(data);
-    var url = 'https://poparide.canvasolutions.co.uk/public/api/add';
+    // var _response = await request.send();
     var response = await http.post(
-      Uri.parse(url),
+      uri,
       body: body,
       headers: {
         "Content-Type": "application/json",
@@ -1021,6 +1027,11 @@ class _HowWillUseState extends State<HowWillUse> {
     if (response.statusCode == 200) {
       Navigator.pop(context);
       print('success');
+      print(response.request);
+      print(response.body);
+      print(response.contentLength);
+      print(response.headers);
+      print(response.body);
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -1031,7 +1042,6 @@ class _HowWillUseState extends State<HowWillUse> {
       print('error');
     }
   }
-
   @override
   Widget build(BuildContext context) {
     var safe = MediaQuery.of(context).viewPadding.top;
@@ -1171,10 +1181,12 @@ class _HowWillUseState extends State<HowWillUse> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            if(select==1){
-                              register(phoneNumber, firstName,lastName, bio, year,month,date, gen,"driver");
-                            }else if(select==2){
-                              register(phoneNumber, firstName,lastName, bio, year,month,date, gen,"preesanger");
+                            if (select == 1) {
+                              register(phoneNumber, firstName, lastName, bio,
+                                  year, month, date, gen, "driver", image);
+                            } else if (select == 2) {
+                              register(phoneNumber, firstName, lastName, bio,
+                                  year, month, date, gen, "preesanger", image);
                             }
                           },
                           style: loginWithPhoneButtons(),
