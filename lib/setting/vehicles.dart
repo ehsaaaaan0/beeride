@@ -1,4 +1,5 @@
 
+import 'package:beeride/setting/add_vehicle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,13 @@ class Vehicles extends StatelessWidget{
           height: height,
           width: width,
           margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start,),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 200,width:200,
+            child: ElevatedButton(onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Add_vehicle(),));
+            },child: Text("Random")),)
+          ],)
         ),
       ),
     );

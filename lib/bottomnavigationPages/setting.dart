@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../driver_profile.dart';
-import '../personal_details.dart';
-import '../preferences.dart';
+
+import '../setting/driver_profile.dart';
+import '../setting/personal_details.dart';
+import '../setting/preferences.dart';
 import '../setting/add_vehicle.dart';
 import '../setting/email.dart';
 import '../setting/email_address.dart';
 import '../setting/password.dart';
+import '../setting/vehicles.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
@@ -79,7 +81,7 @@ class SettingPage extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Add_vehicle(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Vehicles(),));
                   },
                   child: Card(elevation: 1,shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),),child: Container(
                     width: width,height: 60,
