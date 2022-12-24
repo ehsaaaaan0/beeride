@@ -50,8 +50,8 @@ class MyApp extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
 
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: MainHomePage(),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MainHomePage(),
     );
   }
 }
