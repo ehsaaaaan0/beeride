@@ -1,7 +1,13 @@
 
+import 'package:beeride/request_a_trip/trip_preview.dart';
 import 'package:beeride/setting/driver_profile.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/material.dart';
+
+import '../post_a_trip/booking.dart';
+import '../post_a_trip/startchat_after_confirmation.dart';
+import 'driver_inbox.dart';
+import 'meet_driver.dart';
 
 class TripsPreview extends StatefulWidget {
   @override
@@ -50,102 +56,108 @@ class _TripsPreviewState extends State<TripsPreview> {
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
-                  width: width,
-                  height: 170,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            const SizedBox(
-                              height: 60,
-                              width: 60,
-                              child: CircleAvatar(
-                                backgroundImage:
-                                AssetImage("assets/images/profile.png"),
+                InkWell(
+                  onTap: ()
+                  {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Meet_driver2(),));
+                  },
+                  child: Container(
+                    width: width,
+                    height: 170,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              const SizedBox(
+                                height: 60,
+                                width: 60,
+                                child: CircleAvatar(
+                                  backgroundImage:
+                                  AssetImage("assets/images/profile.png"),
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Khubaib",
-                              style: pageHeading(),
-                            ),
-                            Image.asset(
-                              "assets/images/verify.png",
-                              height: 14,
-                              width: 13,
-                            ),
-                            Expanded(
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => Driver_profile(),
-                                        ));
-                                  },
-                                  child: Container(
-                                    alignment: Alignment.centerRight,
-                                    child: const Icon(
-                                      Icons.arrow_forward_ios_sharp,
-                                      size: 30,
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Khubaib",
+                                style: pageHeading(),
+                              ),
+                              Image.asset(
+                                "assets/images/verify.png",
+                                height: 14,
+                                width: 13,
+                              ),
+                              Expanded(
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Driver_profile(),
+                                          ));
+                                    },
+                                    child: Container(
+                                      alignment: Alignment.centerRight,
+                                      child: const Icon(
+                                        Icons.arrow_forward_ios_sharp,
+                                        size: 30,
+                                      ),
                                     ),
+                                  )),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Calgary",
+                                    style: yellowText(),
                                   ),
-                                )),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Calgary",
-                                  style: yellowText(),
-                                ),
-                                Text(
-                                  "Calgary, AB, Canada",
-                                  style: detailsHintSize(),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              "Wed, Nov 23 at 6:30am",
-                              style: detailsSize(),
-                            )
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Banff",
-                                  style: yellowText(),
-                                ),
-                                Text(
-                                  "Banff, AB, Canada",
-                                  style: detailsHintSize(),
-                                ),
-                              ],
-                            ),
-                            Text(
-                              "est. 8:15",
-                              style: detailsSize(),
-                            )
-                          ],
-                        ),
-                      ],
+                                  Text(
+                                    "Calgary, AB, Canada",
+                                    style: detailsHintSize(),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "Wed, Nov 23 at 6:30am",
+                                style: detailsSize(),
+                              )
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Banff",
+                                    style: yellowText(),
+                                  ),
+                                  Text(
+                                    "Banff, AB, Canada",
+                                    style: detailsHintSize(),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                "est. 8:15",
+                                style: detailsSize(),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -257,21 +269,33 @@ class _TripsPreviewState extends State<TripsPreview> {
                 ),
                 Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff0073C2),),
-                      margin: EdgeInsets.all(5),
-                      width: width/1.5,
-                      height: 50,
-                      child: Center(child: Text('Request to book', style:whiteText(),)),
+                    InkWell(
+                      onTap: ()
+          {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Booking(),));
+          },
+                      child: Container(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                          color: Color(0xff0073C2),),
+                        margin: EdgeInsets.all(5),
+                        width: width/1.5,
+                        height: 50,
+                        child: Center(child: Text('Request to book', style:whiteText(),)),
+                      ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                        color: Color(0xff0073C2),),
-                      margin: EdgeInsets.all(5),
-                      width: width/6,
-                      height: 50,
-                      child: Center(child: Icon(Icons.message, color: Colors.white,),),
+                    InkWell(
+                      onTap: ()
+                      {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Driver_inbox(),));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                          color: Color(0xff0073C2),),
+                        margin: EdgeInsets.all(5),
+                        width: width/6,
+                        height: 50,
+                        child: Center(child: Icon(Icons.message, color: Colors.white,),),
+                      ),
                     ),
                   ],
                 ),

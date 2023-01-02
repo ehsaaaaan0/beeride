@@ -101,30 +101,35 @@ class HomePage extends StatelessWidget {
                       Container(
                         child: Row(
                           children: [
-                            Container(
-                              margin: EdgeInsets.only(left: 20),
-                              height: 50,
-                              width: (width * 1.35) / 2,
-                              child: Card(
-                                elevation: 1,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20, right: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Search for places...",
-                                        style: searchOfPlaces(),
-                                      ),
-                                      const Icon(
-                                        Icons.search,
-                                        color: Color(0xff6a6a6a),
-                                      )
-                                    ],
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => Find_a_trip(),));
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(left: 20),
+                                height: 50,
+                                width: (width * 1.35) / 2,
+                                child: Card(
+                                  elevation: 1,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 20, right: 10),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Search for places...",
+                                          style: searchOfPlaces(),
+                                        ),
+                                        const Icon(
+                                          Icons.search,
+                                          color: Color(0xff6a6a6a),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),

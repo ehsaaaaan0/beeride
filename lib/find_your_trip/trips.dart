@@ -172,231 +172,236 @@ class _TripsState extends State<Trips> {
                       Expanded(
                         child: ListView.builder(
                           itemBuilder: (context, index) {
-                            return Container(
-                                margin: const EdgeInsets.only(top: 20),
-                                width: double.infinity,
-                                height: 150,
-                                child: Column(
-                                  children: [
-                                    Row(
-                                        crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                        children: [
-                                          eventimages[index],
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Container(
+                            return InkWell(
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => TripsPreview(),));
+                                },
+                              child: Container(
+                                  margin: const EdgeInsets.only(top: 20),
+                                  width: double.infinity,
+                                  height: 150,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                          children: [
+                                            eventimages[index],
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Container(
 
-                                            child: Expanded(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      Text(names[index],
+                                              child: Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Text(names[index],
+                                                            style: const TextStyle(
+                                                                fontFamily:
+                                                                "poppin_regular",
+                                                                fontSize: 12,
+                                                                color: Colors.black)),
+                                                        Image(image: AssetImage('assets/images/verify.png',), height: 20,width: 20,),
+
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                      children: [
+                                                        Icon(Icons.star, color: Colors.deepOrange, size: 15,),
+                                                        Text(
+                                                          rating[index],
+                                                          maxLines: 100,
+                                                          overflow:
+                                                          TextOverflow.ellipsis,
                                                           style: const TextStyle(
                                                               fontFamily:
                                                               "poppin_regular",
-                                                              fontSize: 12,
-                                                              color: Colors.black)),
-                                                      Image(image: AssetImage('assets/images/verify.png',), height: 20,width: 20,),
-
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                    children: [
-                                                      Icon(Icons.star, color: Colors.deepOrange, size: 15,),
-                                                      Text(
-                                                        rating[index],
-                                                        maxLines: 100,
-                                                        overflow:
-                                                        TextOverflow.ellipsis,
-                                                        style: const TextStyle(
+                                                              fontSize: 10,
+                                                              color:
+                                                              Color(0xff767676)),
+                                                        ),
+                                                        SizedBox(width: 15,),
+                                                        Text(
+                                                          driven[index],
+                                                          maxLines: 100,
+                                                          overflow:
+                                                          TextOverflow.ellipsis,
+                                                          style: const TextStyle(
                                                             fontFamily:
                                                             "poppin_regular",
                                                             fontSize: 10,
-                                                            color:
-                                                            Color(0xff767676)),
-                                                      ),
-                                                      SizedBox(width: 15,),
-                                                      Text(
-                                                        driven[index],
-                                                        maxLines: 100,
-                                                        overflow:
-                                                        TextOverflow.ellipsis,
-                                                        style: const TextStyle(
-                                                          fontFamily:
-                                                          "poppin_regular",
-                                                          fontSize: 10,
-                                                          color: Colors.black,
+                                                            color: Colors.black,
+                                                          ),
                                                         ),
-                                                      ),
-                                                      const Text(
-                                                        'driven',
-                                                        maxLines: 100,
-                                                        overflow:
-                                                        TextOverflow.ellipsis,
-                                                        style: TextStyle(
-                                                          fontFamily:
-                                                          "poppin_regular",
-                                                          fontSize: 10,
-                                                          color: Colors.black,
+                                                        const Text(
+                                                          'driven',
+                                                          maxLines: 100,
+                                                          overflow:
+                                                          TextOverflow.ellipsis,
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                            "poppin_regular",
+                                                            fontSize: 10,
+                                                            color: Colors.black,
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  //maxLines: 100,overflow: TextOverflow.ellipsis ,style: const TextStyle(fontFamily: "poppin_regular",fontSize: 12, color: Color(0xff767676)))),
-                                                ],
+                                                      ],
+                                                    ),
+                                                    //maxLines: 100,overflow: TextOverflow.ellipsis ,style: const TextStyle(fontFamily: "poppin_regular",fontSize: 12, color: Color(0xff767676)))),
+                                                  ],
+                                                ),
                                               ),
                                             ),
+                                            Expanded(
+                                              child: Container(
+                                                alignment: Alignment.centerRight,
+                                                child: carimages[index],
+                                                height: 50,
+                                                width: 80,
+                                              ),
+                                            ),
+                                          ]
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                        MainAxisAlignment
+                                            .spaceBetween,
+                                        children: [
+                                          Text(
+                                            time[index],
+                                            maxLines: 100,
+                                            overflow:
+                                            TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                                fontFamily:
+                                                "poppin_regular",
+                                                fontSize: 10,
+                                                color:
+                                                Colors.black),
                                           ),
-                                          Expanded(
-                                            child: Container(
-                                              alignment: Alignment.centerRight,
-                                              child: carimages[index],
-                                              height: 50,
-                                              width: 80,
+                                          Text(
+                                            seat[index],
+                                            maxLines: 100,
+                                            overflow:
+                                            TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                              fontFamily:
+                                              "poppin_regular",
+                                              fontSize: 10,
+                                              color: Colors.black,
                                             ),
                                           ),
-                                        ]
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment
-                                          .spaceBetween,
-                                      children: [
-                                        Text(
-                                          time[index],
-                                          maxLines: 100,
-                                          overflow:
-                                          TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                              fontFamily:
-                                              "poppin_regular",
-                                              fontSize: 10,
-                                              color:
-                                              Colors.black),
-                                        ),
-                                        Text(
-                                          seat[index],
-                                          maxLines: 100,
-                                          overflow:
-                                          TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                            fontFamily:
-                                            "poppin_regular",
-                                            fontSize: 10,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(children: [
-                                      Container(
-                                        width: mqwidth/6,
-                                        child: Text(
-                                          city[index],
-                                          maxLines: 100,
-                                          overflow:
-                                          TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                            fontFamily:
-                                            "poppin_regular",
-                                            fontSize: 10,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
+                                        ],
                                       ),
-                                      SizedBox(width: 10,),
-                                      Container(
-                                        width: mqwidth/2.5,
-                                        child: Text(
-                                          location[index],
-                                          maxLines: 100,
-                                          overflow:
-                                          TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                              fontFamily:
-                                              "poppin_regular",
-                                              fontSize: 10,
-                                              color:
-                                              Colors.black),
-                                        ),
-                                      ),
-                                      Icon(Icons.cases_sharp),
-                                      Icon(Icons.pets_rounded),
-                                    ],),
-                                    Row(children: [
-                                      Container(
-                                        width: mqwidth/6,
-                                        child: Text(
-                                          city1[index],
-                                          maxLines: 100,
-                                          overflow:
-                                          TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                            fontFamily:
-                                            "poppin_regular",
-                                            fontSize: 10,
-                                            color: Colors.blue,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 10,),
-                                      Text(
-                                        location1[index],
-                                        maxLines: 100,
-                                        overflow:
-                                        TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                            fontFamily:
-                                            "poppin_regular",
-                                            fontSize: 10,
-                                            color:
-                                            Colors.black),
-                                      ),
-                                    ],),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
+                                      Row(children: [
                                         Container(
-                                          width: 120,
-
-                                          height: 30,
-                                          margin: EdgeInsets.all(5),
-                                          padding: EdgeInsets.only(right: 5, left: 5),
-                                          decoration: BoxDecoration(
-                                              color: Color(0xffF1AD00),
-                                              borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomRight: Radius.circular(10),),
-
-                                              boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)]
-                                          ),
-                                          child:
-                                          Center(
-                                            child: Text(
-                                              seatleft[index],
-                                              maxLines: 100,
-                                              overflow:
-                                              TextOverflow.ellipsis,
-                                              style: const TextStyle(
-                                                  fontFamily:
-                                                  "poppin_regular",
-                                                  fontSize: 10,
-                                                  color:
-                                                  Colors.black),
+                                          width: mqwidth/6,
+                                          child: Text(
+                                            city[index],
+                                            maxLines: 100,
+                                            overflow:
+                                            TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                              fontFamily:
+                                              "poppin_regular",
+                                              fontSize: 10,
+                                              color: Colors.blue,
                                             ),
                                           ),
-
                                         ),
-                                      ],
-                                    ),
+                                        SizedBox(width: 10,),
+                                        Container(
+                                          width: mqwidth/2.5,
+                                          child: Text(
+                                            location[index],
+                                            maxLines: 100,
+                                            overflow:
+                                            TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                                fontFamily:
+                                                "poppin_regular",
+                                                fontSize: 10,
+                                                color:
+                                                Colors.black),
+                                          ),
+                                        ),
+                                        Icon(Icons.cases_sharp),
+                                        Icon(Icons.pets_rounded),
+                                      ],),
+                                      Row(children: [
+                                        Container(
+                                          width: mqwidth/6,
+                                          child: Text(
+                                            city1[index],
+                                            maxLines: 100,
+                                            overflow:
+                                            TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                              fontFamily:
+                                              "poppin_regular",
+                                              fontSize: 10,
+                                              color: Colors.blue,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 10,),
+                                        Text(
+                                          location1[index],
+                                          maxLines: 100,
+                                          overflow:
+                                          TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                              fontFamily:
+                                              "poppin_regular",
+                                              fontSize: 10,
+                                              color:
+                                              Colors.black),
+                                        ),
+                                      ],),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Container(
+                                            width: 120,
 
-                                  ],
-                                ),
+                                            height: 30,
+                                            margin: EdgeInsets.all(5),
+                                            padding: EdgeInsets.only(right: 5, left: 5),
+                                            decoration: BoxDecoration(
+                                                color: Color(0xffF1AD00),
+                                                borderRadius: BorderRadius.only(topLeft: Radius.circular(10),bottomRight: Radius.circular(10),),
+
+                                                boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)]
+                                            ),
+                                            child:
+                                            Center(
+                                              child: Text(
+                                                seatleft[index],
+                                                maxLines: 100,
+                                                overflow:
+                                                TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    fontFamily:
+                                                    "poppin_regular",
+                                                    fontSize: 10,
+                                                    color:
+                                                    Colors.black),
+                                              ),
+                                            ),
+
+                                          ),
+                                        ],
+                                      ),
+
+                                    ],
+                                  ),
+                              ),
                             );
                           },
                           itemCount: names.length,
@@ -408,38 +413,33 @@ class _TripsState extends State<Trips> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => TripsPreview(),));
-                      },
-                      child: Container(
-                        width: 120,
-                        height: 30,
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.only(right: 5, left: 5),
-                        decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(10),
+                    Container(
+                      width: 120,
+                      height: 30,
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.only(right: 5, left: 5),
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(10),
 
-                            boxShadow: const [BoxShadow(blurRadius: 1,color: Colors.grey)]
-                        ),
-                        child:
-                        const Center(
-                          child: Text(
-                            "Post +",
-                            maxLines: 100,
-                            overflow:
-                            TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontFamily:
-                                "poppin_regular",
-                                fontSize: 10,
-                                color:
-                                Colors.white),
-                          ),
-                        ),
-
+                          boxShadow: const [BoxShadow(blurRadius: 1,color: Colors.grey)]
                       ),
+                      child:
+                      const Center(
+                        child: Text(
+                          "Post +",
+                          maxLines: 100,
+                          overflow:
+                          TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontFamily:
+                              "poppin_regular",
+                              fontSize: 10,
+                              color:
+                              Colors.white),
+                        ),
+                      ),
+
                     ),
                   ],
                 ),
