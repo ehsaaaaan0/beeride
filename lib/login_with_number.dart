@@ -34,11 +34,11 @@ class LoginWithNumber extends StatelessWidget {
         child: Container(
           height: height,
           width: width,
-          padding: EdgeInsets.only(right: 20, left: 20, top: 20),
+          padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: height / 5,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +48,7 @@ class LoginWithNumber extends StatelessWidget {
                         children: [
                           InkWell(
                               onTap: () => Navigator.pop(context),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_back_sharp,
                                 size: 30,
                               )),
@@ -141,7 +141,7 @@ class LoginWithNumber extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       ),
                     ],
@@ -186,7 +186,7 @@ class OnBoarding extends StatelessWidget {
                         children: [
                           InkWell(
                               onTap: () => Navigator.pop(context),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_back_sharp,
                                 size: 30,
                               )),
@@ -224,7 +224,7 @@ class OnBoarding extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 width: 7,
                               ),
                               Image.asset(
@@ -232,7 +232,7 @@ class OnBoarding extends StatelessWidget {
                                 height: 35,
                                 width: 60,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               Expanded(
@@ -257,7 +257,7 @@ class OnBoarding extends StatelessWidget {
                                 height: 35,
                                 width: 60,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 30,
                               ),
                               Expanded(
@@ -282,7 +282,7 @@ class OnBoarding extends StatelessWidget {
                                 height: 35,
                                 width: 60,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 30,
                               ),
                               Expanded(
@@ -359,11 +359,11 @@ class ReviewPicture extends StatelessWidget {
           child: Container(
             height: height,
             width: width,
-            margin: EdgeInsets.only(left: 20, right: 20),
+            margin: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   height: height / 5,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -373,7 +373,7 @@ class ReviewPicture extends StatelessWidget {
                         children: [
                           InkWell(
                               onTap: () => Navigator.pop(context),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_back_sharp,
                                 size: 30,
                               )),
@@ -411,7 +411,7 @@ class ReviewPicture extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 width: 7,
                               ),
                               Image.asset(
@@ -419,7 +419,7 @@ class ReviewPicture extends StatelessWidget {
                                 height: 35,
                                 width: 60,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               Expanded(
@@ -653,7 +653,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                               child: RawMaterialButton(
                                 onPressed: () {},
                                 elevation: 2.0,
-                                fillColor: Color(0xffffcd4e),
+                                fillColor: const Color(0xffffcd4e),
                                 padding: const EdgeInsets.all(5.0),
                                 shape: const CircleBorder(),
                                 child: const Icon(
@@ -681,7 +681,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: const EdgeInsets.only(left: 20),
                       child: TextField(
                         controller: fullName,
                         keyboardType: TextInputType.name,
@@ -693,7 +693,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
@@ -795,7 +795,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                   elevation: 2,
                   shadowColor: Colors.black,
                   child: Padding(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     child: TextField(
                       controller: dateInput,
                       decoration: const InputDecoration(
@@ -843,7 +843,7 @@ class _CompleteProfileState extends State<CompleteProfile> {
                     width: double.infinity,
                     height: 101,
                     child: Padding(
-                        padding: EdgeInsets.only(left: 20, right: 20),
+                        padding: const EdgeInsets.only(left: 20, right: 20),
                         child: TextField(
                           controller: bio,
                           keyboardType: TextInputType.multiline,
@@ -996,6 +996,8 @@ class _HowWillUseState extends State<HowWillUse> {
     );
     var url = 'https://poparide.canvasolutions.co.uk/public/api/add';
     Uri uri = Uri.parse(url);
+    // var pic = await http.MultipartFile.fromPath("profilepicture", image.path);
+
     Map data = {
       'name': firstName,
       'last_name': lastName,
@@ -1004,7 +1006,7 @@ class _HowWillUseState extends State<HowWillUse> {
       'email': email,
       'roll_as': roll,
       'password': "random",
-      'profilepicture': image,
+      'profilepicture': "imagepath.jpg",
       'birth_month': month,
       'birth_day': date,
       'birth_year': year,
@@ -1029,9 +1031,7 @@ class _HowWillUseState extends State<HowWillUse> {
       print('success');
       print(response.request);
       print(response.body);
-      print(response.contentLength);
-      print(response.headers);
-      print(response.body);
+
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -1041,7 +1041,44 @@ class _HowWillUseState extends State<HowWillUse> {
       Navigator.pop(context);
       print('error');
     }
-  }
+    }
+
+
+    // var request = http.MultipartRequest('POST', uri);
+    // request.fields['name']=firstName;
+    // request.fields['number']=phoneNumber;
+    // request.fields['status']='pending';
+    // request.fields['email']=email;
+    // request.fields['roll_as']=roll;
+    // request.fields['password']='random';
+    // request.fields['gender']=gen;
+    // request.fields['birth_month']=month;
+    // request.fields['birth_day']=date;
+    // request.fields['birth_year']=year;
+    // request.fields['description']=bio;
+    // var profilepicture = await http.MultipartFile.fromPath('profilepicture', image.path);
+    // request.files.add(profilepicture);
+    // var response = await request.send();
+    // print(response.statusCode);
+    // if(response.statusCode==200){
+    //   Navigator.pop(context);
+    //   print('success');
+    //   print(response.request);
+    //   print(response.contentLength);
+    //   print(response.headers);
+    //   Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => MainHomePage(),
+    //       ));
+    // } else {
+    //   Navigator.pop(context);
+    //   print('error');
+    // }
+    // }
+
+
+
   @override
   Widget build(BuildContext context) {
     var safe = MediaQuery.of(context).viewPadding.top;
@@ -1186,7 +1223,7 @@ class _HowWillUseState extends State<HowWillUse> {
                                   year, month, date, gen, "driver", image);
                             } else if (select == 2) {
                               register(phoneNumber, firstName, lastName, bio,
-                                  year, month, date, gen, "preesanger", image);
+                                  year, month, date, gen, "passenger", image);
                             }
                           },
                           style: loginWithPhoneButtons(),

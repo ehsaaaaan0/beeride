@@ -1,7 +1,7 @@
+import 'package:beeride/post_a_trip/trp_preview.dart';
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../main_home.dart';
 import '../ui_helper/button_styles.dart';
 
 class PostATrip extends StatefulWidget {
@@ -24,7 +24,7 @@ class _PostATripState extends State<PostATrip> {
   int others = 0;
   int bike = 0;
   int skin = 0;
-  int bookingType=1;
+  int bookingType = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -44,21 +44,26 @@ class _PostATripState extends State<PostATrip> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(
-                                child: InkWell(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Icon(
-                                    Icons.arrow_back_sharp,
-                                    size: 30,
-                                    color: Colors.black,
-                                  ),
-                                ),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Icon(
+                                Icons.arrow_back_sharp,
+                                size: 30,
+                                color: Colors.black,
                               ),
-                          Expanded(child: Center(child:Text("Post a Trip", style: pageName()))),
+                            ),
+                          ),
+                          Expanded(
+                              child: Center(
+                                  child:
+                                      Text("Post a Trip", style: pageName()))),
                         ],
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       const Text(
                         "Itinerary",
                         style: TextStyle(
@@ -71,7 +76,7 @@ class _PostATripState extends State<PostATrip> {
                         style: TextStyle(
                             fontFamily: "poppin_regular",
                             fontSize: 14,
-                            color: const Color(0xff686868)),
+                            color: Color(0xff686868)),
                       ),
                       const SizedBox(
                         height: 20,
@@ -85,17 +90,17 @@ class _PostATripState extends State<PostATrip> {
                       ),
                       Card(
                           elevation: 1,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
-                          child: Container(
+                          child: SizedBox(
                             height: 45,
                             child: Row(
                               children: [
                                 SizedBox(
                                     height: 60,
                                     width: width / 7,
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.location_on,
                                       size: 15,
                                     )),
@@ -175,7 +180,7 @@ class _PostATripState extends State<PostATrip> {
                                 "Enter a precise and with",
                                 style: TextStyle(
                                     fontFamily: "poppin_regular",
-                                    color: const Color(0xff686868),
+                                    color: Color(0xff686868),
                                     fontSize: 10),
                               ),
                               Text(
@@ -189,7 +194,7 @@ class _PostATripState extends State<PostATrip> {
                                 " or ",
                                 style: TextStyle(
                                     fontFamily: "poppin_regular",
-                                    color: const Color(0xff686868),
+                                    color: Color(0xff686868),
                                     fontSize: 10),
                               ),
                               Text(
@@ -301,12 +306,12 @@ class _PostATripState extends State<PostATrip> {
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
-                                    children: [
+                                    children: const [
                                       Icon(
                                         Icons.calendar_month_outlined,
                                         size: 15,
                                       ),
-                                      const Text(
+                                      Text(
                                         "Departure date",
                                         style: TextStyle(
                                             fontSize: 12,
@@ -345,12 +350,12 @@ class _PostATripState extends State<PostATrip> {
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
-                                    children: [
+                                    children: const [
                                       Icon(
                                         Icons.timer,
                                         size: 14,
                                       ),
-                                      const Text(
+                                      Text(
                                         "Time",
                                         style: TextStyle(
                                             fontSize: 12,
@@ -383,9 +388,9 @@ class _PostATripState extends State<PostATrip> {
                             color: Colors.black),
                       ),
                       const Text(
-                        "This helps you get more booking and makes it it easier for passngers to identify yur vehicle during pick-up",
+                        "This helps you get more booking and makes it it easier for passengers to identify yur vehicle during pick-up",
                         style: TextStyle(
-                            color: const Color(0xff686868),
+                            color: Color(0xff686868),
                             fontFamily: "poppin_regular",
                             fontSize: 12),
                       ),
@@ -393,7 +398,7 @@ class _PostATripState extends State<PostATrip> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Container(
@@ -423,15 +428,15 @@ class _PostATripState extends State<PostATrip> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
-                          Text(
+                          const Text(
                             "Skip Vehicle ",
                             style: TextStyle(
                                 fontFamily: "poppin_regular",
                                 fontSize: 14,
-                                color: const Color(0xff686868)),
+                                color: Color(0xff686868)),
                           )
                         ],
                       ),
@@ -440,19 +445,19 @@ class _PostATripState extends State<PostATrip> {
                       ),
 
                       Container(
-                        width: double.infinity,
+                        width: width,
                         height: 140,
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.only(right: 5, left: 5),
+                        margin: const EdgeInsets.all(5),
+                        padding: const EdgeInsets.only(right: 5, left: 5),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: Colors.white,
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(blurRadius: 1, color: Colors.grey)
                             ]),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             Image(
                               image: AssetImage('assets/images/car_Select.png'),
                               height: 58,
@@ -463,633 +468,600 @@ class _PostATripState extends State<PostATrip> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Model',
-                              style: subHeading(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Model',
+                            style: subHeading(),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.only(right: 5, left: 5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(blurRadius: 1, color: Colors.grey)
+                                ]),
+                            height: 40,
+                            width: width / 1.8,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: const EdgeInsets.only(
+                                      right: 10, left: 10),
+                                  hintStyle: detailsHintSize(),
+                                  hintText: 'e.g Ford Focus'),
                             ),
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              padding: EdgeInsets.only(right: 5, left: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(blurRadius: 1, color: Colors.grey)
-                                  ]),
-                              height: 40,
-                              width: width / 1.8,
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    contentPadding:
-                                        EdgeInsets.only(right: 10, left: 10),
-                                    hintStyle: detailsHintSize(),
-                                    hintText: 'e.g Ford Focus'),
-                              ),
-                            )
-                          ],
-                        ),
+                          )
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Type',
-                              style: subHeading(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Type',
+                            style: subHeading(),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.only(right: 5, left: 5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(blurRadius: 1, color: Colors.grey)
+                                ]),
+                            height: 40,
+                            width: width / 1.8,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                DropdownButton<String>(
+                                  items:
+                                      number.map((String dropDownStringItem) {
+                                    return DropdownMenuItem<String>(
+                                      value: dropDownStringItem,
+                                      child: Text(dropDownStringItem),
+                                    );
+                                  }).toList(),
+                                  onChanged: (newValueSelected) {
+                                    setState(() {
+                                      this.currentItemSelected =
+                                          newValueSelected!;
+                                    });
+                                  },
+                                  value: currentItemSelected,
+                                ),
+                              ],
                             ),
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              padding: EdgeInsets.only(right: 5, left: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(blurRadius: 1, color: Colors.grey)
-                                  ]),
-                              height: 40,
-                              width: width / 1.8,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  DropdownButton<String>(
-                                    items:
-                                        number.map((String dropDownStringItem) {
-                                      return DropdownMenuItem<String>(
-                                        value: dropDownStringItem,
-                                        child: Text(dropDownStringItem),
-                                      );
-                                    }).toList(),
-                                    onChanged: (newValueSelected) {
-                                      setState(() {
-                                        this.currentItemSelected =
-                                            newValueSelected!;
-                                      });
-                                    },
-                                    value: currentItemSelected,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Color',
-                              style: subHeading(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Color',
+                            style: subHeading(),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.only(right: 5, left: 5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(blurRadius: 1, color: Colors.grey)
+                                ]),
+                            height: 40,
+                            width: width / 1.8,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                DropdownButton<String>(
+                                  items:
+                                      carcolor.map((String dropDownStringItem) {
+                                    return DropdownMenuItem<String>(
+                                      value: dropDownStringItem,
+                                      child: Text(dropDownStringItem),
+                                    );
+                                  }).toList(),
+                                  onChanged: (newValueSelected) {
+                                    setState(() {
+                                      this.currentColorSelected =
+                                          newValueSelected!;
+                                    });
+                                  },
+                                  value: currentColorSelected,
+                                ),
+                              ],
                             ),
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              padding: EdgeInsets.only(right: 5, left: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(blurRadius: 1, color: Colors.grey)
-                                  ]),
-                              height: 40,
-                              width: width / 1.8,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  DropdownButton<String>(
-                                    items: carcolor
-                                        .map((String dropDownStringItem) {
-                                      return DropdownMenuItem<String>(
-                                        value: dropDownStringItem,
-                                        child: Text(dropDownStringItem),
-                                      );
-                                    }).toList(),
-                                    onChanged: (newValueSelected) {
-                                      setState(() {
-                                        this.currentColorSelected =
-                                            newValueSelected!;
-                                      });
-                                    },
-                                    value: currentColorSelected,
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                          )
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Year',
-                              style: subHeading(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Year',
+                            style: subHeading(),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.only(right: 5, left: 5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(blurRadius: 1, color: Colors.grey)
+                                ]),
+                            height: 40,
+                            width: width / 1.8,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: const EdgeInsets.only(
+                                      right: 10, left: 10),
+                                  hintStyle: detailsHintSize(),
+                                  hintText: 'YYY'),
                             ),
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              padding: EdgeInsets.only(right: 5, left: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(blurRadius: 1, color: Colors.grey)
-                                  ]),
-                              height: 40,
-                              width: width / 1.8,
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    contentPadding:
-                                        EdgeInsets.only(right: 10, left: 10),
-                                    hintStyle: detailsHintSize(),
-                                    hintText: 'YYY'),
-                              ),
-                            )
-                          ],
-                        ),
+                          )
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Licence plate',
-                              style: subHeading(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Licence plate',
+                            style: subHeading(),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.all(5),
+                            padding: const EdgeInsets.only(right: 5, left: 5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(blurRadius: 1, color: Colors.grey)
+                                ]),
+                            height: 40,
+                            width: width / 1.8,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: const EdgeInsets.only(
+                                      right: 10, left: 10),
+                                  hintStyle: detailsHintSize(),
+                                  hintText: 'POP 123'),
                             ),
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              padding: EdgeInsets.only(right: 5, left: 5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(blurRadius: 1, color: Colors.grey)
-                                  ]),
-                              height: 40,
-                              width: width / 1.8,
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    contentPadding:
-                                        EdgeInsets.only(right: 10, left: 10),
-                                    hintStyle: detailsHintSize(),
-                                    hintText: 'POP 123'),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
-                      Container(
-                        child: Text(
-                          'Luggage',
-                          style: subHeading(),
-                        ),
+                      Text(
+                        'Luggage',
+                        style: subHeading(),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  luggage = 0;
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: luggage == 0
-                                        ? Colors.black
-                                        : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 5,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Icon(Icons.shopping_bag,
-                                        size: 15,
-                                        color: luggage == 0
-                                            ? Colors.white
-                                            : Colors.black),
-                                    Text(
-                                      'No luggage',
-                                      style: TextStyle(
-                                        fontFamily: "poppin_regular",
-                                        fontSize: 8,
-                                        color: luggage == 0
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                luggage = 0;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: luggage == 0
+                                      ? Colors.black
+                                      : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 5,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(Icons.shopping_bag,
+                                      size: 15,
+                                      color: luggage == 0
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text(
+                                    'No luggage',
+                                    style: TextStyle(
+                                      fontFamily: "poppin_regular",
+                                      fontSize: 8,
+                                      color: luggage == 0
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  luggage = 1;
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: luggage == 1
-                                        ? Colors.black
-                                        : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 5,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Icon(Icons.shopping_bag,
-                                        size: 15,
-                                        color: luggage == 1
-                                            ? Colors.white
-                                            : Colors.black),
-                                    Text(
-                                      'Small',
-                                      style: TextStyle(
-                                        fontFamily: "poppin_regular",
-                                        fontSize: 8,
-                                        color: luggage == 1
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                luggage = 1;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: luggage == 1
+                                      ? Colors.black
+                                      : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 5,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(Icons.shopping_bag,
+                                      size: 15,
+                                      color: luggage == 1
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text(
+                                    'Small',
+                                    style: TextStyle(
+                                      fontFamily: "poppin_regular",
+                                      fontSize: 8,
+                                      color: luggage == 1
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  luggage = 2;
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: luggage == 2
-                                        ? Colors.black
-                                        : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 5,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Icon(Icons.shopping_bag,
-                                        size: 15,
-                                        color: luggage == 2
-                                            ? Colors.white
-                                            : Colors.black),
-                                    Text(
-                                      'Medium',
-                                      style: TextStyle(
-                                        fontFamily: "poppin_regular",
-                                        fontSize: 8,
-                                        color: luggage == 2
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                luggage = 2;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: luggage == 2
+                                      ? Colors.black
+                                      : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 5,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(Icons.shopping_bag,
+                                      size: 15,
+                                      color: luggage == 2
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text(
+                                    'Medium',
+                                    style: TextStyle(
+                                      fontFamily: "poppin_regular",
+                                      fontSize: 8,
+                                      color: luggage == 2
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  luggage = 3;
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: luggage == 3
-                                        ? Colors.black
-                                        : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 5,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Icon(Icons.shopping_bag,
-                                        size: 15,
-                                        color: luggage == 3
-                                            ? Colors.white
-                                            : Colors.black),
-                                    Text(
-                                      'Large',
-                                      style: TextStyle(
-                                        fontFamily: "poppin_regular",
-                                        fontSize: 8,
-                                        color: luggage == 3
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                luggage = 3;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: luggage == 3
+                                      ? Colors.black
+                                      : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 5,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Icon(Icons.shopping_bag,
+                                      size: 15,
+                                      color: luggage == 3
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text(
+                                    'Large',
+                                    style: TextStyle(
+                                      fontFamily: "poppin_regular",
+                                      fontSize: 8,
+                                      color: luggage == 3
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Back row seat',
-                              style: subHeading(),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Pledge to a mximum of 2 people in back for better reviews.',
-                              style: searchOfPlaces(),
-                            )
-                          ],
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Back row seat',
+                            style: subHeading(),
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            'Pledge to a maximum of 2 people in back for better reviews.',
+                            style: searchOfPlaces(),
+                          )
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  maxpeople = 0;
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: maxpeople == 0
-                                        ? Colors.black
-                                        : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 2.5,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.airline_seat_legroom_extra_sharp,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                maxpeople = 0;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: maxpeople == 0
+                                      ? Colors.black
+                                      : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 2.5,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.airline_seat_legroom_extra_sharp,
+                                      color: maxpeople == 0
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text('Max 2 People',
+                                      style: TextStyle(
+                                        fontFamily: "poppin_regular",
+                                        fontSize: 12,
                                         color: maxpeople == 0
                                             ? Colors.white
-                                            : Colors.black),
-                                    Text('Max 2 People',
-                                        style: TextStyle(
-                                          fontFamily: "poppin_regular",
-                                          fontSize: 12,
-                                          color: maxpeople == 0
-                                              ? Colors.white
-                                              : Colors.black,
-                                        ))
-                                  ],
-                                ),
+                                            : Colors.black,
+                                      ))
+                                ],
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  maxpeople = 1;
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: maxpeople == 1
-                                        ? Colors.black
-                                        : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 2.5,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.airline_seat_legroom_extra_sharp,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                maxpeople = 1;
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: maxpeople == 1
+                                      ? Colors.black
+                                      : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 2.5,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.airline_seat_legroom_extra_sharp,
+                                      color: maxpeople == 1
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text('Max 2 People',
+                                      style: TextStyle(
+                                        fontFamily: "poppin_regular",
+                                        fontSize: 12,
                                         color: maxpeople == 1
                                             ? Colors.white
-                                            : Colors.black),
-                                    Text('Max 2 People',
-                                        style: TextStyle(
-                                          fontFamily: "poppin_regular",
-                                          fontSize: 12,
-                                          color: maxpeople == 1
-                                              ? Colors.white
-                                              : Colors.black,
-                                        ))
-                                  ],
-                                ),
+                                            : Colors.black,
+                                      ))
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
-                      Container(
-                        child: Text(
-                          'Others',
-                          style: subHeading(),
-                        ),
+                      Text(
+                        'Others',
+                        style: subHeading(),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  if (others == 0) {
-                                    others = 1;
-                                  } else {
-                                    others = 0;
-                                  }
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: others == 0
-                                        ? Colors.black
-                                        : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 3.5,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.flare_outlined,
-                                        color: others == 0
-                                            ? Colors.white
-                                            : Colors.black),
-                                    Text(
-                                      'Winter tries',
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                if (others == 0) {
+                                  others = 1;
+                                } else {
+                                  others = 0;
+                                }
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color:
+                                      others == 0 ? Colors.black : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 3.5,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.flare_outlined,
+                                      color: others == 0
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text(
+                                    'Winter tries',
+                                    style: TextStyle(
+                                      fontFamily: "poppin_regular",
+                                      fontSize: 8,
+                                      color: others == 0
+                                          ? Colors.white
+                                          : Colors.black,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                if (bike == 0) {
+                                  bike = 1;
+                                } else {
+                                  bike = 0;
+                                }
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color:
+                                      bike == 0 ? Colors.black : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 4,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.directions_bike_outlined,
+                                      color: bike == 0
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text('Bikes',
                                       style: TextStyle(
                                         fontFamily: "poppin_regular",
                                         fontSize: 8,
-                                        color: others == 0
-                                            ? Colors.white
-                                            : Colors.black,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  if (bike == 0) {
-                                    bike = 1;
-                                  } else {
-                                    bike = 0;
-                                  }
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color:
-                                        bike == 0 ? Colors.black : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 4,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.directions_bike_outlined,
                                         color: bike == 0
                                             ? Colors.white
-                                            : Colors.black),
-                                    Text('Bikes',
-                                        style: TextStyle(
-                                          fontFamily: "poppin_regular",
-                                          fontSize: 8,
-                                          color: bike == 0
-                                              ? Colors.white
-                                              : Colors.black,
-                                        )),
-                                  ],
-                                ),
+                                            : Colors.black,
+                                      )),
+                                ],
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                setState(() {
-                                  if (pet == 0) {
-                                    pet = 1;
-                                  } else {
-                                    pet = 0;
-                                  }
-                                });
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color:
-                                        pet == 0 ? Colors.black : Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          blurRadius: 1, color: Colors.grey)
-                                    ]),
-                                height: 30,
-                                width: width / 4,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.pets_rounded,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                if (pet == 0) {
+                                  pet = 1;
+                                } else {
+                                  pet = 0;
+                                }
+                              });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: pet == 0 ? Colors.black : Colors.white,
+                                  boxShadow: const [
+                                    BoxShadow(blurRadius: 1, color: Colors.grey)
+                                  ]),
+                              height: 30,
+                              width: width / 4,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.pets_rounded,
+                                      color: pet == 0
+                                          ? Colors.white
+                                          : Colors.black),
+                                  Text('Pets',
+                                      style: TextStyle(
+                                        fontFamily: "poppin_regular",
+                                        fontSize: 8,
                                         color: pet == 0
                                             ? Colors.white
-                                            : Colors.black),
-                                    Text('Pets',
-                                        style: TextStyle(
-                                          fontFamily: "poppin_regular",
-                                          fontSize: 8,
-                                          color: pet == 0
-                                              ? Colors.white
-                                              : Colors.black,
-                                        )),
-                                  ],
-                                ),
+                                            : Colors.black,
+                                      )),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       InkWell(
@@ -1106,7 +1078,7 @@ class _PostATripState extends State<PostATrip> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
                                 color: skin == 0 ? Colors.black : Colors.white,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(blurRadius: 1, color: Colors.grey)
                                 ]),
                             height: 30,
@@ -1152,7 +1124,7 @@ class _PostATripState extends State<PostATrip> {
                       const Text(
                         "Select your preference: review each booking request manually or accept all bookings instantly.",
                         style: TextStyle(
-                            color: const Color(0xff686868),
+                            color: Color(0xff686868),
                             fontFamily: "poppin_regular",
                             fontSize: 12),
                       ),
@@ -1171,8 +1143,8 @@ class _PostATripState extends State<PostATrip> {
                       ),
                       InkWell(
                         onTap: () {
-                          setState((){
-                            bookingType =0;
+                          setState(() {
+                            bookingType = 0;
                           });
                         },
                         child: Card(
@@ -1183,19 +1155,24 @@ class _PostATripState extends State<PostATrip> {
                           child: Container(
                             width: width,
                             decoration: BoxDecoration(
-                                color: bookingType==0?Color(0xfff5f5f5):Colors.white,
+                                color: bookingType == 0
+                                    ? const Color(0xfff5f5f5)
+                                    : Colors.white,
                                 borderRadius: BorderRadius.circular(20),
-                                border: bookingType==0?Border.all(
-                            width: 1, color: const Color(0xff666666)):Border.all(
-                              width: 1, color: Colors.white)
-                            ),
+                                border: bookingType == 0
+                                    ? Border.all(
+                                        width: 1,
+                                        color: const Color(0xff666666))
+                                    : Border.all(
+                                        width: 1, color: Colors.white)),
                             height: 160,
                             padding: const EdgeInsets.only(left: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Image.asset("assets/images/requestTOBOOk.png", width: 37,height:31),
+                                Image.asset("assets/images/requestTOBOOk.png",
+                                    width: 37, height: 31),
                                 const Text(
                                   "Request to book",
                                   style: TextStyle(
@@ -1230,9 +1207,9 @@ class _PostATripState extends State<PostATrip> {
                         height: 15,
                       ),
                       InkWell(
-                        onTap: (){
+                        onTap: () {
                           setState(() {
-                            bookingType =1;
+                            bookingType = 1;
                           });
                         },
                         child: Card(
@@ -1243,12 +1220,16 @@ class _PostATripState extends State<PostATrip> {
                           child: Container(
                             width: width,
                             decoration: BoxDecoration(
-                                color: bookingType==1?Color(0xfff5f5f5):Colors.white,
+                                color: bookingType == 1
+                                    ? const Color(0xfff5f5f5)
+                                    : Colors.white,
                                 borderRadius: BorderRadius.circular(20),
-                                border: bookingType==1?Border.all(
-                                    width: 1, color: const Color(0xff666666)):Border.all(
-                                    width: 1, color: Colors.white)
-                            ),
+                                border: bookingType == 1
+                                    ? Border.all(
+                                        width: 1,
+                                        color: const Color(0xff666666))
+                                    : Border.all(
+                                        width: 1, color: Colors.white)),
                             height: 160,
                             child: Container(
                               margin: const EdgeInsets.only(left: 20),
@@ -1256,7 +1237,8 @@ class _PostATripState extends State<PostATrip> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.asset("assets/images/light_now.png",width:30, height:40),
+                                  Image.asset("assets/images/light_now.png",
+                                      width: 30, height: 40),
                                   const Text(
                                     "Instant book",
                                     style: TextStyle(
@@ -1267,14 +1249,14 @@ class _PostATripState extends State<PostATrip> {
                                   const Text(
                                     "Unavailable for you",
                                     style: TextStyle(
-                                        color: const Color(0xff686868),
+                                        color: Color(0xff686868),
                                         fontFamily: "poppin_semibold",
                                         fontSize: 12),
                                   ),
                                   const Text(
                                     "Drive at least 5 passengers to enable Instant book",
                                     style: TextStyle(
-                                        color: const Color(0xff686868),
+                                        color: Color(0xff686868),
                                         fontFamily: "poppin_regular",
                                         fontSize: 11),
                                   ),
@@ -1286,7 +1268,8 @@ class _PostATripState extends State<PostATrip> {
                       ),
                       const SizedBox(height: 20),
                       Center(
-                        child: Image.asset("assets/images/image_divider.png",height:5),
+                        child: Image.asset("assets/images/image_divider.png",
+                            height: 5),
                       ),
                       const SizedBox(height: 20),
                       const Text(
@@ -1332,7 +1315,8 @@ class _PostATripState extends State<PostATrip> {
                       ),
                       const SizedBox(height: 20),
                       Center(
-                        child: Image.asset("assets/images/image_divider.png",height: 5),
+                        child: Image.asset("assets/images/image_divider.png",
+                            height: 5),
                       ),
                       const SizedBox(height: 20),
 
@@ -1387,7 +1371,10 @@ class _PostATripState extends State<PostATrip> {
                       ),
                       const SizedBox(height: 20),
                       Center(
-                        child: Image.asset("assets/images/image_divider.png",height: 5,),
+                        child: Image.asset(
+                          "assets/images/image_divider.png",
+                          height: 5,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       const Text(
@@ -1404,15 +1391,15 @@ class _PostATripState extends State<PostATrip> {
                           SizedBox(
                               height: 55,
                               width: 55,
-                              child:
-                                  Image.asset("assets/images/rule_clock.png",width:41,height:40)),
+                              child: Image.asset("assets/images/rule_clock.png",
+                                  width: 41, height: 40)),
                           const SizedBox(
                             width: 5,
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children:  [
+                            children: [
                               const Text(
                                 "Be reliable",
                                 style: TextStyle(
@@ -1421,17 +1408,15 @@ class _PostATripState extends State<PostATrip> {
                                     color: Colors.black),
                               ),
                               SizedBox(
-                                width: width/1.4,
+                                width: width / 1.4,
                                 child: const Text(
                                   "Only post a trip if you’re sure you’re driving and show up on time",
-
                                   style: TextStyle(
                                       color: Color(0xff686868),
                                       fontFamily: "poppin_regular",
                                       fontSize: 12),
                                 ),
                               ),
-
                             ],
                           )
                         ],
@@ -1445,8 +1430,8 @@ class _PostATripState extends State<PostATrip> {
                           SizedBox(
                               height: 55,
                               width: 55,
-                              child:
-                              Image.asset("assets/images/rule_safe.png",width:41,height:40)),
+                              child: Image.asset("assets/images/rule_safe.png",
+                                  width: 41, height: 40)),
                           const SizedBox(
                             width: 5,
                           ),
@@ -1462,7 +1447,7 @@ class _PostATripState extends State<PostATrip> {
                                     color: Colors.black),
                               ),
                               SizedBox(
-                                width: width/1.4,
+                                width: width / 1.4,
                                 child: const Text(
                                   "Stick to the speed limit and do not use your phone while driving.",
                                   style: TextStyle(
@@ -1471,7 +1456,6 @@ class _PostATripState extends State<PostATrip> {
                                       fontSize: 12),
                                 ),
                               ),
-
                             ],
                           )
                         ],
@@ -1485,8 +1469,8 @@ class _PostATripState extends State<PostATrip> {
                           SizedBox(
                               height: 55,
                               width: 55,
-                              child:
-                              Image.asset("assets/images/rule_money.png",width:41,height:40)),
+                              child: Image.asset("assets/images/rule_money.png",
+                                  width: 41, height: 40)),
                           const SizedBox(
                             width: 5,
                           ),
@@ -1502,7 +1486,7 @@ class _PostATripState extends State<PostATrip> {
                                     color: Colors.black),
                               ),
                               SizedBox(
-                                width: width/1.4,
+                                width: width / 1.4,
                                 child: const Text(
                                   "All passengers pay online and you receive a payout after the trip.",
                                   style: TextStyle(
@@ -1511,12 +1495,10 @@ class _PostATripState extends State<PostATrip> {
                                       fontSize: 12),
                                 ),
                               ),
-
                             ],
                           )
                         ],
                       ),
-
 
                       const SizedBox(height: 25),
                       Row(
@@ -1563,14 +1545,14 @@ class _PostATripState extends State<PostATrip> {
                                 style: TextStyle(
                                     fontFamily: "poppin_regular",
                                     fontSize: 14,
-                                    color: const Color(0xff686868)),
+                                    color: Color(0xff686868)),
                               ),
                               Text(
                                 "suspended if I break these rules",
                                 style: TextStyle(
                                     fontFamily: "poppin_regular",
                                     fontSize: 14,
-                                    color: const Color(0xff686868)),
+                                    color: Color(0xff686868)),
                               ),
                             ],
                           )
@@ -1584,10 +1566,15 @@ class _PostATripState extends State<PostATrip> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TripPreview(),
+                                ));
                           },
                           style: loginWithPhoneButtons(),
                           child: Text(
-                            "Update prefrences",
+                            "Post a trip",
                             style: loginWithPhoneText(),
                           ),
                         ),
@@ -1596,7 +1583,10 @@ class _PostATripState extends State<PostATrip> {
                         height: 40,
                       )
                     ],
-                  )))),
+                  )
+              )
+          )
+      ),
     );
   }
 }

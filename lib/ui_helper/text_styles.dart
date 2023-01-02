@@ -123,7 +123,14 @@ TextStyle pageHeading2(){
 
 TextStyle pageNameBig(){
   return const TextStyle(
-      fontSize: 22, color: Color(0xfff1ad00),
-      fontFamily: "poppin_semibold"
+    fontSize: 22, color: Color(0xfff1ad00),
+    fontFamily: "poppin_semibold"
+  );
+}
+
+TextStyle greenSmall(){
+  return const TextStyle(
+      fontSize: 12, color: Color(0xff49a700),
+      fontFamily: "poppin_regular"
   );
 }
