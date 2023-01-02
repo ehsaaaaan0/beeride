@@ -98,63 +98,61 @@ class HomePage extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Container(
-                        child: Row(
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Find_a_trip(),));
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(left: 20),
-                                height: 50,
-                                width: (width * 1.35) / 2,
-                                child: Card(
-                                  elevation: 1,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 20, right: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Search for places...",
-                                          style: searchOfPlaces(),
-                                        ),
-                                        const Icon(
-                                          Icons.search,
-                                          color: Color(0xff6a6a6a),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(right: 20),
+                      Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Find_a_trip(),));
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(left: 20),
                               height: 50,
-                              width: width / 6.5,
+                              width: (width * 1.35) / 2,
                               child: Card(
                                 elevation: 1,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
-                                child: Container(
-                                    alignment: Alignment.center,
-                                    child: const Icon(
-                                      Icons.message,
-                                      color: Color(0xff6a6a6a),
-                                    )),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Search for places...",
+                                        style: searchOfPlaces(),
+                                      ),
+                                      const Icon(
+                                        Icons.search,
+                                        color: Color(0xff6a6a6a),
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 20),
+                            height: 50,
+                            width: width / 6.5,
+                            child: Card(
+                              elevation: 1,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Container(
+                                  alignment: Alignment.center,
+                                  child: const Icon(
+                                    Icons.message,
+                                    color: Color(0xff6a6a6a),
+                                  )),
+                            ),
+                          ),
+                        ],
                       ),
                       Container(
                           margin: EdgeInsets.only(left: 20, right: 20, top: 10),
