@@ -1,5 +1,6 @@
 import 'package:beeride/ui_helper/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Personal_details extends StatefulWidget{
   @override
@@ -9,6 +10,9 @@ class Personal_details extends StatefulWidget{
 class _Personal_detailsState extends State<Personal_details> {
   int _value=1;
   int _type=1;
+  var dateInput = TextEditingController();
+  TextEditingController timeinput = TextEditingController();
+  int seat = 1;
   @override
   Widget build(BuildContext context) {
 
@@ -102,7 +106,7 @@ return Scaffold(
                border: InputBorder.none,
                contentPadding: EdgeInsets.only(right: 10, left: 10),
                hintStyle: detailsHintSize(),
-               hintText: 'Jennifer'
+               hintText: 'Jennifer',
            ),
          ),
        ),
@@ -137,12 +141,44 @@ return Scaffold(
        ),
        Container(
          height: 50,
+         width: double.infinity,
          margin: EdgeInsets.all(5),
          padding: EdgeInsets.only(right: 5, left: 5),
          decoration: BoxDecoration(
              borderRadius: BorderRadius.circular(12),
              color: Colors.white,
              boxShadow: [BoxShadow(blurRadius: 1,color: Colors.grey)],
+         ),
+         child: Padding(
+           padding: EdgeInsets.only(left: 10),
+           child: TextField(
+             controller: dateInput,
+             decoration: InputDecoration(
+                 icon: Icon(Icons.calendar_month),
+                 hintText: "Date",
+                 hintStyle: detailsHintSize(),
+                 border: InputBorder.none
+             ),
+             readOnly: true,
+             onTap: () async {
+               DateTime? pickedDate = await showDatePicker(
+                   context: context,
+                   initialDate: DateTime.now(),
+                   firstDate: DateTime(1950),
+                   lastDate: DateTime(2100));
+
+               if (pickedDate != null) {
+                 print(pickedDate);
+                 String formattedDate =
+                 DateFormat('yyyy-MM-dd')
+                     .format(pickedDate);
+                 print(formattedDate);
+                 setState(() {
+                   dateInput.text = formattedDate;
+                 });
+               } else {}
+             },
+           ),
          ),
        ),
        Container(

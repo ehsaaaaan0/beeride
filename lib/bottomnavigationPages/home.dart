@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../find_your_trip/find_a_trip.dart';
 import '../post_a_trip/post_a_trip.dart';
 import '../request_a_trip/request_a_trip.dart';
 import '../ui_helper/text_styles.dart';
@@ -159,7 +160,7 @@ class HomePage extends StatelessWidget {
                           )),
                       Container(
                         margin: EdgeInsets.only(top: 10, right: 20, left: 15),
-                        height: 133,
+                        height: 138,
                         width: width,
                         decoration: const BoxDecoration(
                             color: Color(0xffa3a3a3),
@@ -224,8 +225,8 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10, right: 20, left: 15),
-                        height: 133,
+                        margin: const EdgeInsets.only(top: 10, right: 20, left: 15),
+                        height: 137,
                         width: width,
                         decoration: const BoxDecoration(
                             color: Color(0xffffdadc),
@@ -287,7 +288,7 @@ class HomePage extends StatelessWidget {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 10, right: 20, left: 15),
-                        height: 133,
+                        height: 137,
                         width: width,
                         decoration: const BoxDecoration(
                             color: Color(0xffbde4fe),
@@ -295,7 +296,9 @@ class HomePage extends StatelessWidget {
                               Radius.circular(10),
                             )),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Find_a_trip(),));
+                          },
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20),
                             child: Column(
