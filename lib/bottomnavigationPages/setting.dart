@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import '../setting/driver_profile.dart';
 import '../setting/personal_details.dart';
 import '../setting/preferences.dart';
-import '../setting/add_vehicle.dart';
 import '../setting/email.dart';
-import '../setting/email_address.dart';
 import '../setting/password.dart';
 import '../setting/vehicles.dart';
 
@@ -24,7 +22,7 @@ class SettingPage extends StatelessWidget {
           child: Container(
             height: height-100,
             width: width,
-            margin: EdgeInsets.only(left: 10, right: 10, top: 20),
+            margin: const EdgeInsets.only(left: 10, right: 10, top: 20),
 
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +49,7 @@ class SettingPage extends StatelessWidget {
                     ],
                   ),
                 ),),),
-                SizedBox(height:20),
+                const SizedBox(height:20),
 
                 InkWell(
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Personal_details(),)),

@@ -38,7 +38,7 @@ class LoginWithNumber extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: height / 5,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -996,29 +996,42 @@ class _HowWillUseState extends State<HowWillUse> {
     );
     var url = 'https://poparide.canvasolutions.co.uk/public/api/add';
     Uri uri = Uri.parse(url);
+    // var pic = await http.MultipartFile.fromPath("profilepicture", image.path);
 
-    var request = http.MultipartRequest('POST', uri);
-    request.fields['name']=firstName;
-    request.fields['number']=phoneNumber;
-    request.fields['status']='pending';
-    request.fields['email']=email;
-    request.fields['roll_as']=roll;
-    request.fields['password']='random';
-    request.fields['gender']=gen;
-    request.fields['birth_month']=month;
-    request.fields['birth_day']=date;
-    request.fields['birth_year']=year;
-    request.fields['description']=bio;
-    var profilepicture = await http.MultipartFile.fromPath('profilepicture', image.path);
-    request.files.add(profilepicture);
-    var response = await request.send();
+    Map data = {
+      'name': firstName,
+      'last_name': lastName,
+      'number': phoneNumber,
+      'status': "pending",
+      'email': email,
+      'roll_as': roll,
+      'password': "random",
+      'profilepicture': "imagepath.jpg",
+      'birth_month': month,
+      'birth_day': date,
+      'birth_year': year,
+      "description": bio,
+    };
+    print(data);
+    String body = json.encode(data);
+    // var _response = await request.send();
+    var response = await http.post(
+      uri,
+      body: body,
+      headers: {
+        "Content-Type": "application/json",
+        "accept": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+    );
+    print(response.body);
     print(response.statusCode);
-    if(response.statusCode==200){
+    if (response.statusCode == 200) {
       Navigator.pop(context);
       print('success');
       print(response.request);
-      print(response.contentLength);
-      print(response.headers);
+      print(response.body);
+
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -1029,6 +1042,41 @@ class _HowWillUseState extends State<HowWillUse> {
       print('error');
     }
     }
+
+
+    // var request = http.MultipartRequest('POST', uri);
+    // request.fields['name']=firstName;
+    // request.fields['number']=phoneNumber;
+    // request.fields['status']='pending';
+    // request.fields['email']=email;
+    // request.fields['roll_as']=roll;
+    // request.fields['password']='random';
+    // request.fields['gender']=gen;
+    // request.fields['birth_month']=month;
+    // request.fields['birth_day']=date;
+    // request.fields['birth_year']=year;
+    // request.fields['description']=bio;
+    // var profilepicture = await http.MultipartFile.fromPath('profilepicture', image.path);
+    // request.files.add(profilepicture);
+    // var response = await request.send();
+    // print(response.statusCode);
+    // if(response.statusCode==200){
+    //   Navigator.pop(context);
+    //   print('success');
+    //   print(response.request);
+    //   print(response.contentLength);
+    //   print(response.headers);
+    //   Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => MainHomePage(),
+    //       ));
+    // } else {
+    //   Navigator.pop(context);
+    //   print('error');
+    // }
+    // }
+
 
 
   @override
@@ -1175,7 +1223,7 @@ class _HowWillUseState extends State<HowWillUse> {
                                   year, month, date, gen, "driver", image);
                             } else if (select == 2) {
                               register(phoneNumber, firstName, lastName, bio,
-                                  year, month, date, gen, "preesanger", image);
+                                  year, month, date, gen, "passenger", image);
                             }
                           },
                           style: loginWithPhoneButtons(),

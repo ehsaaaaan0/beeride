@@ -114,3 +114,23 @@ TextStyle whiteDetailedText(){
   );
 }
 
+TextStyle pageHeading2(){
+  return const TextStyle(
+      fontSize: 16, color: Colors.black,
+      fontFamily: "poppin_semibold"
+  );
+}
+
+TextStyle pageNameBig(){
+  return const TextStyle(
+    fontSize: 22, color: Color(0xfff1ad00),
+    fontFamily: "poppin_semibold"
+  );
+}
+
+TextStyle greenSmall(){
+  return const TextStyle(
+      fontSize: 12, color: Color(0xff49a700),
+      fontFamily: "poppin_regular"
+  );
+}

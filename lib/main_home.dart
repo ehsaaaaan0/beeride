@@ -20,7 +20,7 @@ class _MainHomePageState extends State<MainHomePage> {
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
-        child: Container(width: width, height: height, child: pages[pageIndex],),
+        child: SizedBox(width: width, height: height, child: pages[pageIndex],),
       ),
       bottomNavigationBar: Stack(
       alignment: AlignmentDirectional.bottomStart,
@@ -35,7 +35,7 @@ class _MainHomePageState extends State<MainHomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
-                padding: EdgeInsets.only(right: 2, bottom: 5),
+                padding: const EdgeInsets.only(right: 2, bottom: 5),
                 alignment: Alignment.center
                 ,decoration: BoxDecoration(
                 color: pageIndex==0? Colors.black : const Color(0xffcecece),
@@ -64,7 +64,7 @@ class _MainHomePageState extends State<MainHomePage> {
               ),
 
               Container(
-                padding: EdgeInsets.only(right: 2, bottom: 5),
+                padding: const EdgeInsets.only(right: 2, bottom: 5),
                 alignment: Alignment.center
                 ,decoration: BoxDecoration(
                 color: pageIndex==1? Colors.black : const Color(0xffcecece),
@@ -92,7 +92,7 @@ class _MainHomePageState extends State<MainHomePage> {
               ),
 
               Container(
-                padding: EdgeInsets.only(right: 2, bottom: 5),
+                padding: const EdgeInsets.only(right: 2, bottom: 5),
                 alignment: Alignment.center
                 ,decoration: BoxDecoration(
                 color: pageIndex==2? Colors.black : const Color(0xffcecece),
@@ -120,7 +120,7 @@ class _MainHomePageState extends State<MainHomePage> {
               ),
 
               Container(
-                padding: EdgeInsets.only(right: 2, bottom: 5),
+                padding: const EdgeInsets.only(right: 2, bottom: 5),
                 alignment: Alignment.center
                 ,decoration: BoxDecoration(
                 color: pageIndex==3? Colors.black : const Color(0xffcecece),
